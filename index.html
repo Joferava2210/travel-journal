@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Journal</title>
+  <meta name="description" content="Travel Journal: un diario visual de viajes con países, experiencias, fotos y recuerdos de destinos alrededor del mundo." />
+  <meta name="keywords" content="viajes, travel journal, destinos, experiencias de viaje, países visitados, viaje por el mundo" />
+  <meta name="author" content="Joferava" />
+  <meta property="og:title" content="Travel Journal | Diario de viajes" />
+  <meta property="og:description" content="Explora destinos, experiencias y recuerdos de viaje en un diario visual y elegante." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://joferava2210.github.io/travel-journal/images/profile-photo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Travel Journal | Diario de viajes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,8 +21,8 @@
   <header class="site-header">
     <div class="container header-inner">
       <div>
-        <a class="brand" href="#">
-          <span class="brand-mark">✈️</span>
+        <a class="brand" href="#" aria-label="Inicio de Travel Journal">
+          <span class="brand-mark" aria-hidden="true">✈️</span>
           <div>
             <h1>Travel Journal</h1>
             <p>Diario de mis viajes por el mundo.</p>
@@ -60,13 +68,13 @@
             <h3>Ciudades que inspiran</h3>
           </div>
         </div>
-        <div class="hero-slide" style="background-image: url('images/costa-rica/guanacaste.jpg');">
+        <div class="hero-slide" style="background-image: url('images/costa-rica/guanacaste.jpg');" role="img" aria-label="Paisaje natural de Costa Rica con montañas y rutas de aventura">
           <div class="hero-slide-copy">
             <span>Escapadas naturales</span>
             <h3>Rutas entre montañas y lagos</h3>
           </div>
         </div>
-        <div class="hero-slide" style="background-image: url('images/guatemala/tikal.jpg');">
+        <div class="hero-slide" style="background-image: url('images/guatemala/tikal.jpg');" role="img" aria-label="Ruinas de Tikal en Guatemala, un destino de historia y cultura">
           <div class="hero-slide-copy">
             <span>Momentos memorables</span>
             <h3>Atardeceres, historia y cultura</h3>
@@ -145,7 +153,7 @@
       </div>
       <div class="about-grid">
         <div class="profile-card reveal">
-          <img class="profile-photo" src="images/profile-photo.jpg" alt="Foto personal" />
+          <img class="profile-photo" src="images/profile-photo.jpg" alt="Fotografía personal del autor del diario de viajes" />
           <div>
             <h4>Soy viajero y contador de historias</h4>
             <p>Me encanta descubrir nuevas culturas, registrar cada detalle y mantener un diario visual de los destinos que más me impactan.</p>
@@ -277,8 +285,17 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>Hecho para guardar recuerdos, descubrir nuevos destinos y volver a vivir cada viaje.</p>
-      <p>© 2026 — Joferava</p>
+      <div>
+        <p>Hecho para guardar recuerdos, descubrir nuevos destinos y volver a vivir cada viaje.</p>
+        <p>© 2026 — Joferava</p>
+      </div>
+      <div class="footer-links" aria-label="Enlaces de contacto">
+        <a href="mailto:jfelipe221095@gmail.com">Email</a>
+        <a href="https://www.instagram.com/jfelipe.ramirez/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/josé-felipe-ramírez-vargas-710420186" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://www.facebook.com/josefelipe.ramirezz/" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://github.com/Joferava2210" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
     </div>
   </footer>
 
