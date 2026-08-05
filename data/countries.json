@@ -22,7 +22,7 @@
                      "ciudad",
                      "cultura"
                  ],
-        "year":  2023,
+        "year":  2003,
         "favorite":  true
     },
     {
@@ -47,7 +47,7 @@
         "tags":  {
 
                  },
-        "year":  2023,
+        "year":  2022,
         "favorite":  false
     },
     {
@@ -73,7 +73,7 @@
                      "aventura",
                      "cultura"
                  ],
-        "year":  2021,
+        "year":  2024,
         "favorite":  false
     },
     {
@@ -125,7 +125,7 @@
                      "naturaleza",
                      "playa"
                  ],
-        "year":  2020,
+        "year":  1995,
         "favorite":  true
     },
     {
@@ -150,7 +150,7 @@
         "tags":  {
 
                  },
-        "year":  2023,
+        "year":  2024,
         "favorite":  false
     },
     {
@@ -159,7 +159,7 @@
         "places":  [
                        "Cartagena",
                        "Medellín",
-                       "Eje cafetero"
+                       "Bogotá"
                    ],
         "activities":  [
                            "Probar café",
@@ -176,7 +176,7 @@
                      "playa",
                      "ciudad"
                  ],
-        "year":  2023,
+        "year":  2022,
         "favorite":  true
     },
     {
@@ -195,32 +195,30 @@
         "experiences":  "Machu Picchu fue el momento más mágico del viaje.",
         "photos":  [
                        "images/peru/machu-picchu.jpg",
-                       "images/peru/lima.jpg"
+                       "images/peru/cusco.jpg"
                    ],
         "region":  "Otro",
         "tags":  {
 
                  },
-        "year":  2023,
+        "year":  2024,
         "favorite":  false
     },
     {
         "name":  "Paraguay",
-        "description":  "Un encuentro con la naturaleza y la cultura guaraní.",
+        "description":  "Ciudad de compras y la triple frontera.",
         "places":  [
-                       "Asunción",
-                       "Itaipú",
-                       "Encarnación"
+                       "Triple frontera",
+                       "Ciudad del Este"
                    ],
         "activities":  [
-                           "Probar comidas locales",
-                           "Conocer comunidades indígenas",
-                           "Recorrer ríos y lagos"
+                           "Visitar la triple frontera",
+                           "Compras en Ciudad del Este"
                        ],
-        "experiences":  "La experiencia fue tranquila y auténtica, con paisajes menos conocidos.",
+        "experiences":  "La experiencia de compras en Ciudad del Este, recorriendo a pie las fronteras.",
         "photos":  [
-                       "images/paraguay/asuncion.jpg",
-                       "images/paraguay/itaipu.jpg"
+                       "images/paraguay/ciudaddeleste.jpg",
+                       "images/paraguay/paraguay.jpg"
                    ],
         "region":  "SudamÃ©rica",
         "tags":  [
@@ -232,21 +230,21 @@
     },
     {
         "name":  "Brasil",
-        "description":  "Ritmo, playas y selva amazónica.",
+        "description":  "Ritmo, playas y cataratas.",
         "places":  [
                        "Río de Janeiro",
-                       "Salvador",
-                       "Amazonas"
+                       "Cataratas del Iguazú",
+                       "Cristo Redentor"
                    ],
         "activities":  [
                            "Visitar playas famosas",
-                           "Escuchar samba",
-                           "Explorar la selva"
+                           "Ver una final de la Libertadores en el Maracaná",
+                           "Explorar las cataratas"
                        ],
         "experiences":  "La cultura vibrante y las playas fueron absolutamente inolvidables.",
         "photos":  [
-                       "images/brasil/rio.jpg",
-                       "images/brasil/salvador.jpg"
+                       "images/brasil/cristo.jpg",
+                       "images/brasil/iguazu.jpg"
                    ],
         "region":  "SudamÃ©rica",
         "tags":  [
@@ -265,21 +263,21 @@
                        "Mendoza"
                    ],
         "activities":  [
-                           "Ver tango",
+                           "Ver un clásico argentino",
                            "Probar asado",
-                           "Visitar viñedos"
+                           "Conocer la nieve"
                        ],
         "experiences":  "La combinación de tradición y modernidad fue muy atractiva.",
         "photos":  [
-                       "images/argentina/buenos-aires.jpg",
-                       "images/argentina/iguazu.jpg"
+                       "images/argentina/bombonera.jpg",
+                       "images/argentina/mendoza.jpg"
                    ],
         "region":  "SudamÃ©rica",
         "tags":  [
                      "ciudad",
                      "gastronomÃ­a"
                  ],
-        "year":  2020,
+        "year":  2022,
         "favorite":  false
     },
     {
@@ -287,25 +285,25 @@
         "description":  "Historia, cultura y arquitectura impresionante.",
         "places":  [
                        "Londres",
-                       "Stonehenge",
-                       "Bath"
+                       "Watford",
+                       "Palacio de Westminster"
                    ],
         "activities":  [
                            "Visitar museos",
                            "Pasear por plazas históricas",
-                           "Ver paisajes rurales"
+                           "Harry Potter Studios"
                        ],
         "experiences":  "Londres me encantó por su mezcla de modernidad y patrimonio histórico.",
         "photos":  [
                        "images/inglaterra/londres.jpg",
-                       "images/inglaterra/stonehenge.jpg"
+                       "images/inglaterra/harry-potter.jpg"
                    ],
         "region":  "Europa",
         "tags":  [
                      "historia",
                      "ciudad"
                  ],
-        "year":  2024,
+        "year":  2025,
         "favorite":  true
     },
     {
@@ -313,25 +311,25 @@
         "description":  "Arte, gastronomía y elegancia europea.",
         "places":  [
                        "París",
-                       "Valle del Loira",
-                       "Côte d\u0027Azur"
+                       "Nice",
+                       "Versalles"
                    ],
         "activities":  [
                            "Visitar museos",
-                           "Probar pastelería",
+                           "Ver la famosa Torre Eiffel",
                            "Pasear por calles históricas"
                        ],
-        "experiences":  "París fue romántico y cultural, con momentos inolvidables en sus plazas.",
+        "experiences":  "París fue espectacular y cultural, con momentos inolvidables en sus plazas.",
         "photos":  [
                        "images/francia/paris.jpg",
-                       "images/francia/loira.jpg"
+                       "images/francia/louvre.jpg"
                    ],
         "region":  "Europa",
         "tags":  [
                      "cultura",
                      "gastronomÃ­a"
                  ],
-        "year":  2024,
+        "year":  2025,
         "favorite":  false
     },
     {
@@ -340,23 +338,23 @@
         "places":  [
                        "Montecarlo",
                        "Palacio del Príncipe",
-                       "Puerto Hércules"
+                       "Curva de Mónaco"
                    ],
         "activities":  [
                            "Pasear por el puerto",
-                           "Ver el cambio de guardia",
+                           "Ver el ultralujo",
                            "Disfrutar vistas al mar"
                        ],
         "experiences":  "Mónaco impresionó por su glamur y su costa elegante.",
         "photos":  [
-                       "images/monaco/montecarlo.jpg",
-                       "images/monaco/palacio.jpg"
+                       "images/monaco/monaco.jpg",
+                       "images/monaco/casino.jpg"
                    ],
         "region":  "Otro",
         "tags":  {
 
                  },
-        "year":  2023,
+        "year":  2025,
         "favorite":  false
     },
     {
@@ -381,7 +379,7 @@
         "tags":  {
 
                  },
-        "year":  2023,
+        "year":  2025,
         "favorite":  false
     },
     {
@@ -390,23 +388,23 @@
         "places":  [
                        "Ámsterdam",
                        "Keukenhof",
-                       "Rotterdam"
+                       "Zaanse Schans"
                    ],
         "activities":  [
-                           "Pasear en bicicleta",
-                           "Visitar museos",
+                           "Pasear por jardines de tulipanes",
+                           "Visitar pueblos pesqueros",
                            "Recorrer canales"
                        ],
-        "experiences":  "La vida en bicicleta y los canales hicieron el viaje muy especial.",
+        "experiences":  "Los pueblitos aledaños y los canales hicieron el viaje muy especial.",
         "photos":  [
                        "images/paises-bajos/amsterdam.jpg",
-                       "images/paises-bajos/keukenhof.jpg"
+                       "images/paises-bajos/molino.jpg"
                    ],
         "region":  "Otro",
         "tags":  {
 
                  },
-        "year":  2023,
+        "year":  2025,
         "favorite":  false
     },
     {
@@ -414,30 +412,30 @@
         "description":  "Historia profunda y ciudades modernas bien conectadas.",
         "places":  [
                        "Berlín",
-                       "Múnich",
-                       "Castillo de Neuschwanstein"
+                       "Sachsenhausen",
+                       "Isla de los Museos"
                    ],
         "activities":  [
                            "Visitar museos de historia",
-                           "Probar comida local",
-                           "Recorrer castillos"
+                           "Recorrer campos de concentración",
+                           "Ver el famoso muro de Berlín"
                        ],
         "experiences":  "Berlín destacó por su historia reciente y su energía creativa.",
         "photos":  [
-                       "images/alemania/berlin.jpg",
-                       "images/alemania/neuschwanstein.jpg"
+                       "images/alemania/campo.jpg",
+                       "images/alemania/muro.jpg"
                    ],
         "region":  "Europa",
         "tags":  [
                      "historia",
                      "ciudad"
                  ],
-        "year":  2023,
+        "year":  2025,
         "favorite":  false
     },
     {
         "name":  "Italia",
-        "description":  "Arte renacentista, comida increíble y paisajes románticos.",
+        "description":  "Arte renacentista, historia increíble y paisajes de ensueño.",
         "places":  [
                        "Roma",
                        "Venecia",
@@ -445,46 +443,45 @@
                    ],
         "activities":  [
                            "Visitar ruinas antiguas",
-                           "Probar pasta y gelato",
-                           "Caminar por plazas históricas"
+                           "Conocer el Coliseo Romano",
+                           "Recorrer la cuna del Renacimiento"
                        ],
-        "experiences":  "Italia fue un festival de sabores y monumentos inolvidables.",
+        "experiences":  "Italia fue un museo al aire libre y un viaje lleno de historia y arte.",
         "photos":  [
                        "images/italia/roma.jpg",
-                       "images/italia/venecia.jpg"
+                       "images/italia/florencia.jpg"
                    ],
         "region":  "Europa",
         "tags":  [
                      "historia",
                      "gastronomÃ­a"
                  ],
-        "year":  2021,
+        "year":  2025,
         "favorite":  true
     },
     {
         "name":  "Suiza",
         "description":  "Montañas, lagos cristalinos y paisajes alpinos.",
         "places":  [
-                       "Zúrich",
-                       "Interlaken",
-                       "Lucerna"
+                       "St Moritz",
+                       "Bernina Express"
                    ],
         "activities":  [
                            "Caminar en los Alpes",
                            "Visitar lagos",
-                           "Explorar ciudades limpias y organizadas"
+                           "Explorar ciudades debajo de la nieve"
                        ],
         "experiences":  "Los paisajes alpinos y el orden del país dejaron una gran impresión.",
         "photos":  [
-                       "images/suiza/interlaken.jpg",
-                       "images/suiza/luceserna.jpg"
+                       "images/suiza/nieve.jpg",
+                       "images/suiza/suiza.jpg"
                    ],
         "region":  "Europa",
         "tags":  [
                      "montaÃ±a",
                      "naturaleza"
                  ],
-        "year":  2020,
+        "year":  2025,
         "favorite":  false
     },
     {
@@ -502,66 +499,65 @@
                        ],
         "experiences":  "El arte y la solemnidad del Vaticano fueron muy emotivos.",
         "photos":  [
-                       "images/ciudad-del-vaticano/basilica.jpg",
-                       "images/ciudad-del-vaticano/sixtina.jpg"
+                       "images/ciudad-del-vaticano/vaticano.jpg",
+                       "images/ciudad-del-vaticano/capilla-sixtina.jpg"
                    ],
         "region":  "Europa",
         "tags":  [
                      "historia",
                      "cultura"
                  ],
-        "year":  2024,
+        "year":  2025,
         "favorite":  false
     },
     {
         "name":  "Portugal",
-        "description":  "Ciudades costeras, tradición musical y buena gastronomía.",
+        "description":  "Ciudades costeras, tradición musical y ciudad de monjes.",
         "places":  [
                        "Lisboa",
-                       "Oporto",
-                       "Sintra"
+                       "Belém"
                    ],
         "activities":  [
-                           "Escuchar fado",
-                           "Probar pasteles de nata",
-                           "Visitar palacios"
+                           "Visitar la costa",
+                           "Conocer el monasterio de los Jerónimos",
+                           "Recorrer la Torre de Belém"
                        ],
-        "experiences":  "La comida y el ambiente junto al río fueron encantadores.",
+        "experiences":  "La comida y el ambiente junto a la costa fueron encantadores.",
         "photos":  [
-                       "images/portugal/lisboa.jpg",
-                       "images/portugal/oporto.jpg"
+                       "images/portugal/belem.jpg",
+                       "images/portugal/tranvia.jpg"
                    ],
         "region":  "Europa",
         "tags":  [
                      "playa",
                      "cultura"
                  ],
-        "year":  2023,
+        "year":  2025,
         "favorite":  false
     },
     {
         "name":  "España",
-        "description":  "Historia, cultura diversa y una cocina mundialmente famosa.",
+        "description":  "Historia, cultura diversa y estadios mundialmente famosos.",
         "places":  [
                        "Madrid",
-                       "Barcelona",
-                       "Sevilla"
+                       "Barcelona"
                    ],
         "activities":  [
-                           "Visitar museos",
-                           "Probar tapas",
-                           "Disfrutar música y baile"
+                           "Visitar estadios de fútbol",
+                           "Recorrer las calles de Madrid y Barcelona",
+                           "Subir el monte de Montjuïc"
                        ],
-        "experiences":  "España destacó por su calidez, sus fiestas y su patrimonio histórico.",
+        "experiences":  "España destacó por su calidez, sus avenidas y su patrimonio histórico.",
         "photos":  [
-                       "images/espana/madrid.jpg",
-                       "images/espana/barcelona.jpg"
+                       "images/espania/barcelona.jpg",
+                       "images/espania/madrid.jpg"
                    ],
         "region":  "Otro",
-        "tags":  {
-
-                 },
-        "year":  2023,
+        "tags":  [
+                     "historia",
+                     "cultura"
+                 ],
+        "year":  2025,
         "favorite":  false
     }
 ]
