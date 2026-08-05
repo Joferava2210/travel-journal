@@ -1,0 +1,567 @@
+﻿[
+    {
+        "name":  "Estados Unidos",
+        "description":  "Un viaje por ciudades icónicas del cine.",
+        "places":  [
+                       "Nueva York",
+                       "Los Ángeles",
+                       "Orlando"
+                   ],
+        "activities":  [
+                           "TimeSquare, Central Park y Hollywood",
+                           "NBA",
+                           "Disney y Universal Studios"
+                       ],
+        "experiences":  "Fue increíble ver las grandes ciudades y losmlugares más emblemáticos del cine y la televisión.",
+        "photos":  [
+                       "images/estados-unidos/nyc.jpg",
+                       "images/estados-unidos/los-angeles.jpg"
+                   ],
+        "region":  "NorteamÃ©rica",
+        "tags":  [
+                     "ciudad",
+                     "cultura"
+                 ],
+        "year":  2023,
+        "favorite":  true
+    },
+    {
+        "name":  "México",
+        "description":  "Excelente comida, historia y playas paradisíacas.",
+        "places":  [
+                       "Ciudad de México",
+                       "Cancún",
+                       "Teotihuacán"
+                   ],
+        "activities":  [
+                           "Visitar ruinas prehispánicas",
+                           "Probar tacos auténticos",
+                           "Visitar playas paradisiacas"
+                       ],
+        "experiences":  "Pirámides, playas y comida deliciosa hicieron de este viaje una experiencia inolvidable.",
+        "photos":  [
+                       "images/mexico/teotihuacan.jpg",
+                       "images/mexico/cancun.jpg"
+                   ],
+        "region":  "Otro",
+        "tags":  {
+
+                 },
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Guatemala",
+        "description":  "Tierra de volcanes, cultura indígena y ciudades históricas.",
+        "places":  [
+                       "Antigua",
+                       "Lago de Atitlán",
+                       "Tikal"
+                   ],
+        "activities":  [
+                           "Conocer mercados indígenas",
+                           "Visitar templos mayas",
+                           "Subir volcanes"
+                       ],
+        "experiences":  "Me encantó la calidez de la gente y los paisajes llenos de volcanes.",
+        "photos":  [
+                       "images/guatemala/antigua.jpg",
+                       "images/guatemala/tikal.jpg"
+                   ],
+        "region":  "CentroamÃ©rica",
+        "tags":  [
+                     "aventura",
+                     "cultura"
+                 ],
+        "year":  2021,
+        "favorite":  false
+    },
+    {
+        "name":  "El Salvador",
+        "description":  "Parques nacionales, seguridad y cultura centroamericana.",
+        "places":  [
+                       "El Boquerón",
+                       "San Salvador",
+                       "Puerta del Diablo"
+                   ],
+        "activities":  [
+                           "Conocer el antes y después",
+                           "Visitar parques nacionales",
+                           "Probar pupusas"
+                       ],
+        "experiences":  "Visité los parques nacionales con mi mamá, y probé las famosas pupusas.",
+        "photos":  [
+                       "images/el-salvador/puertadiablo.jpg",
+                       "images/el-salvador/boqueron.jpg"
+                   ],
+        "region":  "CentroamÃ©rica",
+        "tags":  [
+                     "naturaleza",
+                     "cultura"
+                 ],
+        "year":  2024,
+        "favorite":  false
+    },
+    {
+        "name":  "Costa Rica",
+        "description":  "Mi país de origen, biodiversidad excepcional.",
+        "places":  [
+                       "Monteverde",
+                       "Guanacaste",
+                       "La Fortuna"
+                   ],
+        "activities":  [
+                           "Visitar volcanes",
+                           "Senderismo en la selva",
+                           "Conocer playas"
+                       ],
+        "experiences":  "La biodiversidad, los parques nacionales y las playas son inolvidables.",
+        "photos":  [
+                       "images/costa-rica/poas.jpg",
+                       "images/costa-rica/guanacaste.jpg"
+                   ],
+        "region":  "CentroamÃ©rica",
+        "tags":  [
+                     "naturaleza",
+                     "playa"
+                 ],
+        "year":  2020,
+        "favorite":  true
+    },
+    {
+        "name":  "Panamá",
+        "description":  "Canales históricos e islas tropicales.",
+        "places":  [
+                       "Ciudad de Panamá",
+                       "Canal de Panamá",
+                       "Bocas del Toro"
+                   ],
+        "activities":  [
+                           "Recorrer el casco antiguo",
+                           "Ver el canal",
+                           "Explorar islas"
+                       ],
+        "experiences":  "Fue increíble ver la ingeniería del canal y las playas caribeñas.",
+        "photos":  [
+                       "images/panama/canal.jpg",
+                       "images/panama/isla.jpg"
+                   ],
+        "region":  "Otro",
+        "tags":  {
+
+                 },
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Colombia",
+        "description":  "Ciudades coloridas, montañas y costa caribeña.",
+        "places":  [
+                       "Cartagena",
+                       "Medellín",
+                       "Eje cafetero"
+                   ],
+        "activities":  [
+                           "Probar café",
+                           "Visitar murales y arte urbano",
+                           "Relajarse en la playa"
+                       ],
+        "experiences":  "La energía de la gente y la mezcla de cultura y naturaleza fueron memorables.",
+        "photos":  [
+                       "images/colombia/cartagena.jpg",
+                       "images/colombia/medellin.jpg"
+                   ],
+        "region":  "SudamÃ©rica",
+        "tags":  [
+                     "playa",
+                     "ciudad"
+                 ],
+        "year":  2023,
+        "favorite":  true
+    },
+    {
+        "name":  "Perú",
+        "description":  "Historia ancestral y paisajes andinos impresionantes.",
+        "places":  [
+                       "Machu Picchu",
+                       "Lima",
+                       "Cusco"
+                   ],
+        "activities":  [
+                           "Ver ruinas incas",
+                           "Probar comida peruana",
+                           "Caminar por el Valle Sagrado"
+                       ],
+        "experiences":  "Machu Picchu fue el momento más mágico del viaje.",
+        "photos":  [
+                       "images/peru/machu-picchu.jpg",
+                       "images/peru/lima.jpg"
+                   ],
+        "region":  "Otro",
+        "tags":  {
+
+                 },
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Paraguay",
+        "description":  "Un encuentro con la naturaleza y la cultura guaraní.",
+        "places":  [
+                       "Asunción",
+                       "Itaipú",
+                       "Encarnación"
+                   ],
+        "activities":  [
+                           "Probar comidas locales",
+                           "Conocer comunidades indígenas",
+                           "Recorrer ríos y lagos"
+                       ],
+        "experiences":  "La experiencia fue tranquila y auténtica, con paisajes menos conocidos.",
+        "photos":  [
+                       "images/paraguay/asuncion.jpg",
+                       "images/paraguay/itaipu.jpg"
+                   ],
+        "region":  "SudamÃ©rica",
+        "tags":  [
+                     "naturaleza",
+                     "cultura"
+                 ],
+        "year":  2019,
+        "favorite":  false
+    },
+    {
+        "name":  "Brasil",
+        "description":  "Ritmo, playas y selva amazónica.",
+        "places":  [
+                       "Río de Janeiro",
+                       "Salvador",
+                       "Amazonas"
+                   ],
+        "activities":  [
+                           "Visitar playas famosas",
+                           "Escuchar samba",
+                           "Explorar la selva"
+                       ],
+        "experiences":  "La cultura vibrante y las playas fueron absolutamente inolvidables.",
+        "photos":  [
+                       "images/brasil/rio.jpg",
+                       "images/brasil/salvador.jpg"
+                   ],
+        "region":  "SudamÃ©rica",
+        "tags":  [
+                     "playa",
+                     "cultura"
+                 ],
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Argentina",
+        "description":  "Ciudades cosmopolitas y escenarios naturales únicos.",
+        "places":  [
+                       "Buenos Aires",
+                       "Cataratas del Iguazú",
+                       "Mendoza"
+                   ],
+        "activities":  [
+                           "Ver tango",
+                           "Probar asado",
+                           "Visitar viñedos"
+                       ],
+        "experiences":  "La combinación de tradición y modernidad fue muy atractiva.",
+        "photos":  [
+                       "images/argentina/buenos-aires.jpg",
+                       "images/argentina/iguazu.jpg"
+                   ],
+        "region":  "SudamÃ©rica",
+        "tags":  [
+                     "ciudad",
+                     "gastronomÃ­a"
+                 ],
+        "year":  2020,
+        "favorite":  false
+    },
+    {
+        "name":  "Inglaterra",
+        "description":  "Historia, cultura y arquitectura impresionante.",
+        "places":  [
+                       "Londres",
+                       "Stonehenge",
+                       "Bath"
+                   ],
+        "activities":  [
+                           "Visitar museos",
+                           "Pasear por plazas históricas",
+                           "Ver paisajes rurales"
+                       ],
+        "experiences":  "Londres me encantó por su mezcla de modernidad y patrimonio histórico.",
+        "photos":  [
+                       "images/inglaterra/londres.jpg",
+                       "images/inglaterra/stonehenge.jpg"
+                   ],
+        "region":  "Europa",
+        "tags":  [
+                     "historia",
+                     "ciudad"
+                 ],
+        "year":  2024,
+        "favorite":  true
+    },
+    {
+        "name":  "Francia",
+        "description":  "Arte, gastronomía y elegancia europea.",
+        "places":  [
+                       "París",
+                       "Valle del Loira",
+                       "Côte d\u0027Azur"
+                   ],
+        "activities":  [
+                           "Visitar museos",
+                           "Probar pastelería",
+                           "Pasear por calles históricas"
+                       ],
+        "experiences":  "París fue romántico y cultural, con momentos inolvidables en sus plazas.",
+        "photos":  [
+                       "images/francia/paris.jpg",
+                       "images/francia/loira.jpg"
+                   ],
+        "region":  "Europa",
+        "tags":  [
+                     "cultura",
+                     "gastronomÃ­a"
+                 ],
+        "year":  2024,
+        "favorite":  false
+    },
+    {
+        "name":  "Mónaco",
+        "description":  "Lujo, mar y un ambiente exclusivo en el Mediterráneo.",
+        "places":  [
+                       "Montecarlo",
+                       "Palacio del Príncipe",
+                       "Puerto Hércules"
+                   ],
+        "activities":  [
+                           "Pasear por el puerto",
+                           "Ver el cambio de guardia",
+                           "Disfrutar vistas al mar"
+                       ],
+        "experiences":  "Mónaco impresionó por su glamur y su costa elegante.",
+        "photos":  [
+                       "images/monaco/montecarlo.jpg",
+                       "images/monaco/palacio.jpg"
+                   ],
+        "region":  "Otro",
+        "tags":  {
+
+                 },
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Bélgica",
+        "description":  "Ciudades medievales, chocolate y cerveza artesanal.",
+        "places":  [
+                       "Bruselas",
+                       "Brujas",
+                       "Gante"
+                   ],
+        "activities":  [
+                           "Probar chocolate",
+                           "Caminar por plazas antiguas",
+                           "Visitar museos"
+                       ],
+        "experiences":  "El ambiente de Brujas se sintió como un cuento medieval.",
+        "photos":  [
+                       "images/belgica/brujas.jpg",
+                       "images/belgica/bruselas.jpg"
+                   ],
+        "region":  "Otro",
+        "tags":  {
+
+                 },
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Países Bajos",
+        "description":  "Canales, bicicletas y flores coloridas.",
+        "places":  [
+                       "Ámsterdam",
+                       "Keukenhof",
+                       "Rotterdam"
+                   ],
+        "activities":  [
+                           "Pasear en bicicleta",
+                           "Visitar museos",
+                           "Recorrer canales"
+                       ],
+        "experiences":  "La vida en bicicleta y los canales hicieron el viaje muy especial.",
+        "photos":  [
+                       "images/paises-bajos/amsterdam.jpg",
+                       "images/paises-bajos/keukenhof.jpg"
+                   ],
+        "region":  "Otro",
+        "tags":  {
+
+                 },
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Alemania",
+        "description":  "Historia profunda y ciudades modernas bien conectadas.",
+        "places":  [
+                       "Berlín",
+                       "Múnich",
+                       "Castillo de Neuschwanstein"
+                   ],
+        "activities":  [
+                           "Visitar museos de historia",
+                           "Probar comida local",
+                           "Recorrer castillos"
+                       ],
+        "experiences":  "Berlín destacó por su historia reciente y su energía creativa.",
+        "photos":  [
+                       "images/alemania/berlin.jpg",
+                       "images/alemania/neuschwanstein.jpg"
+                   ],
+        "region":  "Europa",
+        "tags":  [
+                     "historia",
+                     "ciudad"
+                 ],
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "Italia",
+        "description":  "Arte renacentista, comida increíble y paisajes románticos.",
+        "places":  [
+                       "Roma",
+                       "Venecia",
+                       "Florencia"
+                   ],
+        "activities":  [
+                           "Visitar ruinas antiguas",
+                           "Probar pasta y gelato",
+                           "Caminar por plazas históricas"
+                       ],
+        "experiences":  "Italia fue un festival de sabores y monumentos inolvidables.",
+        "photos":  [
+                       "images/italia/roma.jpg",
+                       "images/italia/venecia.jpg"
+                   ],
+        "region":  "Europa",
+        "tags":  [
+                     "historia",
+                     "gastronomÃ­a"
+                 ],
+        "year":  2021,
+        "favorite":  true
+    },
+    {
+        "name":  "Suiza",
+        "description":  "Montañas, lagos cristalinos y paisajes alpinos.",
+        "places":  [
+                       "Zúrich",
+                       "Interlaken",
+                       "Lucerna"
+                   ],
+        "activities":  [
+                           "Caminar en los Alpes",
+                           "Visitar lagos",
+                           "Explorar ciudades limpias y organizadas"
+                       ],
+        "experiences":  "Los paisajes alpinos y el orden del país dejaron una gran impresión.",
+        "photos":  [
+                       "images/suiza/interlaken.jpg",
+                       "images/suiza/luceserna.jpg"
+                   ],
+        "region":  "Europa",
+        "tags":  [
+                     "montaÃ±a",
+                     "naturaleza"
+                 ],
+        "year":  2020,
+        "favorite":  false
+    },
+    {
+        "name":  "Ciudad de Vaticano",
+        "description":  "El centro espiritual de la Iglesia católica y arte religioso.",
+        "places":  [
+                       "Basílica de San Pedro",
+                       "Museos del Vaticano",
+                       "Plaza de San Pedro"
+                   ],
+        "activities":  [
+                           "Ver la Capilla Sixtina",
+                           "Subir a la cúpula",
+                           "Recorrer museos"
+                       ],
+        "experiences":  "El arte y la solemnidad del Vaticano fueron muy emotivos.",
+        "photos":  [
+                       "images/ciudad-del-vaticano/basilica.jpg",
+                       "images/ciudad-del-vaticano/sixtina.jpg"
+                   ],
+        "region":  "Europa",
+        "tags":  [
+                     "historia",
+                     "cultura"
+                 ],
+        "year":  2024,
+        "favorite":  false
+    },
+    {
+        "name":  "Portugal",
+        "description":  "Ciudades costeras, tradición musical y buena gastronomía.",
+        "places":  [
+                       "Lisboa",
+                       "Oporto",
+                       "Sintra"
+                   ],
+        "activities":  [
+                           "Escuchar fado",
+                           "Probar pasteles de nata",
+                           "Visitar palacios"
+                       ],
+        "experiences":  "La comida y el ambiente junto al río fueron encantadores.",
+        "photos":  [
+                       "images/portugal/lisboa.jpg",
+                       "images/portugal/oporto.jpg"
+                   ],
+        "region":  "Europa",
+        "tags":  [
+                     "playa",
+                     "cultura"
+                 ],
+        "year":  2023,
+        "favorite":  false
+    },
+    {
+        "name":  "España",
+        "description":  "Historia, cultura diversa y una cocina mundialmente famosa.",
+        "places":  [
+                       "Madrid",
+                       "Barcelona",
+                       "Sevilla"
+                   ],
+        "activities":  [
+                           "Visitar museos",
+                           "Probar tapas",
+                           "Disfrutar música y baile"
+                       ],
+        "experiences":  "España destacó por su calidez, sus fiestas y su patrimonio histórico.",
+        "photos":  [
+                       "images/espana/madrid.jpg",
+                       "images/espana/barcelona.jpg"
+                   ],
+        "region":  "Otro",
+        "tags":  {
+
+                 },
+        "year":  2023,
+        "favorite":  false
+    }
+]
