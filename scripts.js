@@ -37,6 +37,28 @@ function bindSearch() {
   });
 }
 
+function getCountryExperienceMeta(country) {
+  const text = `${country.name} ${country.description || ''} ${country.places?.join(' ') || ''} ${country.activities?.join(' ') || ''}`.toLowerCase();
+
+  if (/(playa|mar|costa|isla|beach|coast)/.test(text)) {
+    return { icon: '🌊', label: 'Playa & relax', badge: 'Relax' };
+  }
+
+  if (/(cultura|historia|arte|museo|tradicion|tradición|heritage)/.test(text)) {
+    return { icon: '🏛️', label: 'Cultura', badge: 'Cultura' };
+  }
+
+  if (/(comida|gastr|food|mercado|sabores)/.test(text)) {
+    return { icon: '🍽️', label: 'Gastronomía', badge: 'Gastronomía' };
+  }
+
+  if (/(montaña|aventura|ruta|trek|nature|volcan|parque|nature)/.test(text)) {
+    return { icon: '🧭', label: 'Aventura', badge: 'Aventura' };
+  }
+
+  return { icon: '🗺️', label: 'Viaje', badge: 'Experiencia' };
+}
+
 function renderCountryList() {
   const count = filteredCountries.length;
   if (totalCountries) totalCountries.textContent = countries.length;
@@ -54,9 +76,17 @@ function renderCountryList() {
   }
 
   countryList.innerHTML = filteredCountries.map((country, index) => {
+    const meta = getCountryExperienceMeta(country);
     return `
       <article class="country-card${index === activeIndex ? ' active' : ''}" data-index="${index}">
-        <h4>${country.name}</h4>
+        <div class="country-card-title-group">
+          <span class="country-icon" aria-hidden="true">${meta.icon}</span>
+          <div>
+            <h4>${country.name}</h4>
+            <p class="country-card-subtitle">${meta.label}</p>
+          </div>
+        </div>
+        <span class="country-badge">${meta.badge}</span>
         <p>${country.description || 'Haz clic para ver detalles.'}</p>
       </article>
     `;
@@ -115,22 +145,22 @@ function renderCountryDetail(country) {
         </div>
 
         <div class="detail-section">
-          <h4>Lugares destacados</h4>
+          <h4>📍 Lugares destacados</h4>
           ${createList(country.places)}
         </div>
 
         <div class="detail-section">
-          <h4>Actividades favoritas</h4>
+          <h4>🧭 Actividades favoritas</h4>
           ${createList(country.activities)}
         </div>
 
         <div class="detail-section">
-          <h4>Experiencias</h4>
+          <h4>✨ Experiencias</h4>
           <p>${country.experiences || 'Sin comentarios adicionales.'}</p>
         </div>
 
         <div class="detail-section">
-          <h4>Fotos</h4>
+          <h4>📸 Fotos</h4>
           ${createPhotoGrid(country.photos)}
         </div>
       </div>

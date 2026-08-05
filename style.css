@@ -108,12 +108,13 @@ button, input {
   grid-template-columns: 1.3fr 1fr;
   gap: 32px;
   align-items: center;
-  margin: 12px 0 30px;
-  padding: 32px;
+  margin: 12px 0 36px;
+  padding: 34px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 32px;
   box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
 }
 
 .eyebrow {
@@ -302,7 +303,8 @@ button, input {
   background: var(--surface-strong);
   border: 1px solid var(--border);
   border-radius: 28px;
-  padding: 26px;
+  padding: 28px;
+  box-shadow: 0 18px 58px rgba(34, 60, 110, 0.05);
 }
 
 .panel-header {
@@ -430,35 +432,93 @@ button, input {
 }
 
 .country-card {
+  position: relative;
   display: grid;
   gap: 10px;
   border: 1px solid transparent;
-  border-radius: 20px;
+  border-radius: 22px;
   padding: 20px 18px;
   cursor: pointer;
   background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(246,249,255,0.95));
+  box-shadow: 0 10px 28px rgba(34, 60, 110, 0.04);
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease, opacity 0.35s ease;
   animation: fadeInUp 0.6s ease both;
+  overflow: hidden;
+}
+
+.country-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(60,103,214,0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
 }
 
 .country-card:hover,
 .country-card.active {
-  transform: translateY(-1px);
-  box-shadow: 0 24px 40px rgba(42, 79, 143, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 24px 42px rgba(42, 79, 143, 0.15);
   border-color: rgba(60,103,214,0.25);
   background: rgba(255,255,255,0.98);
 }
 
+.country-card:hover::before,
+.country-card.active::before {
+  opacity: 1;
+}
+
+.country-card-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.country-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: rgba(60,103,214,0.12);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
 .country-card h4 {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.06rem;
+}
+
+.country-card-subtitle {
+  margin: 4px 0 0;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.country-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(60,103,214,0.1);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .country-card p {
   margin: 0;
   color: var(--muted);
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .country-detail {
@@ -509,6 +569,12 @@ button, input {
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: scale(1.01);
+  transition: transform 0.55s ease;
+}
+
+.detail-panel:hover .detail-hero img {
+  transform: scale(1.05);
 }
 
 .detail-content {
@@ -654,11 +720,22 @@ button, input {
 }
 
 .feature-card {
+  position: relative;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(60,103,214,0.15);
   border-radius: 24px;
   padding: 26px;
   box-shadow: 0 18px 48px rgba(34, 60, 110, 0.06);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.feature-card:hover,
+.profile-card:hover,
+.achievement-card:hover,
+.destination-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 54px rgba(34, 60, 110, 0.12);
+  border-color: rgba(60,103,214,0.24);
 }
 
 .feature-header {
@@ -703,6 +780,7 @@ button, input {
   background: rgba(255,255,255,0.98);
   border: 1px solid rgba(60,103,214,0.12);
   box-shadow: 0 22px 60px rgba(34, 60, 110, 0.05);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
 .profile-photo {
@@ -891,6 +969,7 @@ button, input {
   border-radius: 24px;
   padding: 24px;
   box-shadow: 0 18px 46px rgba(34, 60, 110, 0.06);
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
 .destination-icon {
@@ -962,6 +1041,7 @@ button, input {
   padding: 28px;
   box-shadow: 0 18px 46px rgba(34, 60, 110, 0.06);
   animation: fadeInUp 0.65s ease both;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
 }
 
 .achievement-card strong {
