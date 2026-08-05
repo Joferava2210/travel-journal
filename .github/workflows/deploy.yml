@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,20 +20,6 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-        working-directory: .
-        continue-on-error: true
-
-      - name: Build site
-        run: echo "No build step required for plain HTML/CSS/JS"
-        working-directory: .
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -37,3 +28,7 @@ jobs:
           publish_branch: gh-pages
           keep_files: true
           allow_empty_commit: true
+          force_orphan: true
+          enable_jekyll: false
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
