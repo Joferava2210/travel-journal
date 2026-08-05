@@ -3,10 +3,23 @@ const countryDetail = document.getElementById('country-detail');
 const countrySummary = document.getElementById('country-summary');
 const totalCountries = document.getElementById('total-countries');
 const searchInput = document.getElementById('search-country');
+const metricKilometers = document.getElementById('metric-km');
+const metricFlights = document.getElementById('metric-flights');
+const metricContinents = document.getElementById('metric-continents');
+const continentNorthAmerica = document.getElementById('continent-north-america');
+const continentCentralAmerica = document.getElementById('continent-central-america');
+const continentSouthAmerica = document.getElementById('continent-south-america');
+const continentEurope = document.getElementById('continent-europe');
+const achievementPhotos = document.getElementById('achievement-photos');
+const achievementStories = document.getElementById('achievement-stories');
+const achievementUpdated = document.getElementById('achievement-updated');
 let countries = [];
 let filteredCountries = [];
 let activeIndex = 0;
 let detailMap = null;
+let photoLightbox = null;
+
+const TOTAL_FLIGHTS = 62;
 
 const countryMapLocations = {
   'Estados Unidos': { lat: 39.8283, lng: -98.5795, zoom: 4 },
@@ -41,6 +54,7 @@ async function loadCountries() {
     }
     countries = await response.json();
     filteredCountries = countries;
+    updateCredibilityMetrics(countries);
     bindSearch();
     renderCountryList();
   } catch (error) {
@@ -48,6 +62,84 @@ async function loadCountries() {
     countrySummary.textContent = 'No hay países disponibles';
     if (totalCountries) totalCountries.textContent = '0';
   }
+}
+
+function haversineDistanceKm(origin, destination) {
+  const toRad = (degrees) => (degrees * Math.PI) / 180;
+  const earthRadiusKm = 6371;
+  const latDiff = toRad(destination.lat - origin.lat);
+  const lngDiff = toRad(destination.lng - origin.lng);
+
+  const a =
+    Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
+    Math.cos(toRad(origin.lat)) * Math.cos(toRad(destination.lat)) *
+    Math.sin(lngDiff / 2) * Math.sin(lngDiff / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return earthRadiusKm * c;
+}
+
+function calculateEstimatedKilometers(countryEntries) {
+  let previousLocation = null;
+  let totalDistance = 0;
+
+  countryEntries.forEach((country) => {
+    const location = countryMapLocations[country.name];
+    if (!location) return;
+
+    if (previousLocation) {
+      totalDistance += haversineDistanceKm(previousLocation, location);
+    }
+    previousLocation = location;
+  });
+
+  return Math.round(totalDistance);
+}
+
+function updateCredibilityMetrics(countryEntries) {
+  const regionCount = {
+    'Norteamérica': 0,
+    'Centroamérica': 0,
+    'Sudamérica': 0,
+    'Europa': 0
+  };
+
+  const regionToContinent = {
+    'Norteamérica': 'América',
+    'Centroamérica': 'América',
+    'Sudamérica': 'América',
+    'Europa': 'Europa'
+  };
+
+  countryEntries.forEach((country) => {
+    if (regionCount[country.region] !== undefined) {
+      regionCount[country.region] += 1;
+    }
+  });
+
+  const visitedContinents = new Set(
+    countryEntries
+      .map(country => regionToContinent[country.region])
+      .filter(Boolean)
+  ).size;
+  const estimatedKilometers = calculateEstimatedKilometers(countryEntries);
+  const totalPhotos = countryEntries.reduce((sum, country) => sum + (country.photos?.length || 0), 0);
+  const totalStories = countryEntries.reduce((sum, country) => sum + (country.experiences ? 1 : 0), 0);
+  const latestYear = countryEntries.reduce((max, country) => Math.max(max, Number(country.year) || 0), 0);
+  const numberFormatter = new Intl.NumberFormat('es-ES');
+
+  if (metricKilometers) metricKilometers.textContent = `${numberFormatter.format(estimatedKilometers)} km`;
+  if (metricFlights) metricFlights.textContent = numberFormatter.format(TOTAL_FLIGHTS);
+  if (metricContinents) metricContinents.textContent = numberFormatter.format(visitedContinents);
+
+  if (continentNorthAmerica) continentNorthAmerica.textContent = numberFormatter.format(regionCount['Norteamérica']);
+  if (continentCentralAmerica) continentCentralAmerica.textContent = numberFormatter.format(regionCount['Centroamérica']);
+  if (continentSouthAmerica) continentSouthAmerica.textContent = numberFormatter.format(regionCount['Sudamérica']);
+  if (continentEurope) continentEurope.textContent = numberFormatter.format(regionCount['Europa']);
+
+  if (achievementPhotos) achievementPhotos.textContent = numberFormatter.format(totalPhotos);
+  if (achievementStories) achievementStories.textContent = numberFormatter.format(totalStories);
+  if (achievementUpdated) achievementUpdated.textContent = latestYear > 0 ? latestYear.toString() : 'N/A';
 }
 
 function bindSearch() {
@@ -139,15 +231,146 @@ function createList(items) {
   return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
 }
 
-function createPhotoGrid(photos) {
+function createPhotoCarousel(photos, countryName) {
   if (!photos || photos.length === 0) {
     return '<p>No hay fotos disponibles.</p>';
   }
+
+  const safeCountryName = countryName || 'este destino';
+
+  if (photos.length === 1) {
+    return `
+      <div class="photo-single">
+        <img class="photo-carousel-image" src="${photos[0]}" alt="Foto de viaje en ${safeCountryName}" loading="lazy" tabindex="0" role="button" aria-label="Abrir foto en pantalla completa" />
+      </div>
+    `;
+  }
+
   return `
-    <div class="photo-grid">
-      ${photos.map(photo => `<img src="${photo}" alt="Foto de viaje en ${photo}" loading="lazy" />`).join('')}
+    <div class="photo-carousel" data-index="0">
+      <div class="photo-carousel-main">
+        <img class="photo-carousel-image" src="${photos[0]}" alt="Foto de viaje en ${safeCountryName}" loading="lazy" tabindex="0" role="button" aria-label="Abrir foto en pantalla completa" />
+        <button class="photo-carousel-control photo-carousel-prev" type="button" aria-label="Foto anterior">←</button>
+        <button class="photo-carousel-control photo-carousel-next" type="button" aria-label="Siguiente foto">→</button>
+      </div>
+      <div class="photo-carousel-thumbs">
+        ${photos.map((photo, index) => `<button type="button" class="photo-thumb${index === 0 ? ' active' : ''}" data-photo-index="${index}" style="background-image: url('${photo}');" aria-label="Ver foto ${index + 1} de ${safeCountryName}"></button>`).join('')}
+      </div>
     </div>
   `;
+}
+
+function ensurePhotoLightbox() {
+  if (photoLightbox) return photoLightbox;
+
+  const modal = document.createElement('div');
+  modal.className = 'photo-lightbox';
+  modal.setAttribute('aria-hidden', 'true');
+  modal.innerHTML = `
+    <div class="photo-lightbox-backdrop" data-close="true"></div>
+    <div class="photo-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Imagen ampliada de viaje">
+      <button type="button" class="photo-lightbox-close" aria-label="Cerrar imagen">×</button>
+      <img class="photo-lightbox-image" src="" alt="" />
+    </div>
+  `;
+
+  const closeButton = modal.querySelector('.photo-lightbox-close');
+  const closeBackdrop = modal.querySelector('[data-close="true"]');
+
+  const closeLightbox = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-open');
+  };
+
+  closeButton?.addEventListener('click', closeLightbox);
+  closeBackdrop?.addEventListener('click', closeLightbox);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
+
+  document.body.appendChild(modal);
+  photoLightbox = { modal, closeLightbox };
+  return photoLightbox;
+}
+
+function openPhotoLightbox(src, alt) {
+  if (!src) return;
+  const { modal } = ensurePhotoLightbox();
+  const image = modal.querySelector('.photo-lightbox-image');
+
+  if (!image) return;
+  image.src = src;
+  image.alt = alt || 'Imagen de viaje ampliada';
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('lightbox-open');
+}
+
+function setupDetailPhotoLightbox() {
+  const clickableImages = countryDetail.querySelectorAll('.photo-carousel-image');
+  if (!clickableImages.length) return;
+
+  clickableImages.forEach((image) => {
+    const open = () => openPhotoLightbox(image.currentSrc || image.src, image.alt);
+    image.addEventListener('click', open);
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open();
+      }
+    });
+  });
+}
+
+function setupDetailPhotoCarousel(photos, countryName) {
+  if (!photos || photos.length <= 1) {
+    return;
+  }
+
+  const carousel = countryDetail.querySelector('.photo-carousel');
+  const image = carousel?.querySelector('.photo-carousel-image');
+  const prevButton = carousel?.querySelector('.photo-carousel-prev');
+  const nextButton = carousel?.querySelector('.photo-carousel-next');
+  const thumbButtons = carousel?.querySelectorAll('.photo-thumb');
+
+  if (!carousel || !image || !prevButton || !nextButton || !thumbButtons?.length) {
+    return;
+  }
+
+  let currentPhotoIndex = 0;
+
+  const updateCarousel = () => {
+    image.src = photos[currentPhotoIndex];
+    image.alt = `Foto ${currentPhotoIndex + 1} de ${countryName}`;
+    thumbButtons.forEach((thumb, index) => {
+      thumb.classList.toggle('active', index === currentPhotoIndex);
+    });
+  };
+
+  prevButton.addEventListener('click', () => {
+    currentPhotoIndex = (currentPhotoIndex - 1 + photos.length) % photos.length;
+    updateCarousel();
+  });
+
+  nextButton.addEventListener('click', () => {
+    currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+    updateCarousel();
+  });
+
+  thumbButtons.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+      currentPhotoIndex = index;
+      updateCarousel();
+    });
+  });
 }
 
 function getCountryMapLocation(country) {
@@ -397,11 +620,14 @@ function renderCountryDetail(country) {
 
         <div class="detail-section">
           <h4>📸 Fotos</h4>
-          ${createPhotoGrid(country.photos)}
+          ${createPhotoCarousel(country.photos, country.name)}
         </div>
       </div>
     </section>
   `;
+
+  setupDetailPhotoCarousel(country.photos, country.name);
+  setupDetailPhotoLightbox();
 
   destroyDetailMap();
 
