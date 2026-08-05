@@ -581,7 +581,27 @@ a:focus-visible {
 
 .country-list {
   display: grid;
-  gap: 14px;
+  gap: 12px;
+  max-height: clamp(720px, 82vh, 1040px);
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(60, 103, 214, 0.35) transparent;
+}
+
+.country-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.country-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.country-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(60, 103, 214, 0.4), rgba(60, 103, 214, 0.25));
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 .country-card {
@@ -589,8 +609,8 @@ a:focus-visible {
   display: grid;
   gap: 10px;
   border: 1px solid transparent;
-  border-radius: 22px;
-  padding: 20px 18px;
+  border-radius: 20px;
+  padding: 16px;
   cursor: pointer;
   background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(246,249,255,0.95));
   box-shadow: 0 10px 28px rgba(34, 60, 110, 0.04);
@@ -624,7 +644,7 @@ a:focus-visible {
 
 .country-card-title-group {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
 
@@ -632,25 +652,25 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   background: rgba(60,103,214,0.12);
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   flex-shrink: 0;
 }
 
 .country-card h4 {
   margin: 0;
-  font-size: 1.06rem;
+  font-size: 1.04rem;
 }
 
 .country-card-subtitle {
   margin: 4px 0 0;
   color: var(--primary);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -659,19 +679,24 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   align-self: flex-start;
-  padding: 7px 10px;
+  padding: 6px 10px;
   border-radius: 999px;
   background: rgba(60,103,214,0.1);
   color: var(--primary);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
 }
 
 .country-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .country-detail {
@@ -1453,6 +1478,64 @@ body[data-theme="dark"] .search-group input:focus {
   box-shadow: 0 0 0 4px rgba(143,166,255,0.12);
 }
 
+body[data-theme="dark"] .detail-map-card {
+  background: linear-gradient(145deg, rgba(16, 26, 48, 0.95), rgba(13, 22, 42, 0.95));
+  border-color: rgba(121, 143, 196, 0.28);
+}
+
+body[data-theme="dark"] .detail-map-visual {
+  background: linear-gradient(145deg, rgba(20, 33, 62, 0.95), rgba(13, 22, 42, 0.95));
+  border-color: rgba(121, 143, 196, 0.24);
+}
+
+body[data-theme="dark"] .country-map {
+  border-color: rgba(121, 143, 196, 0.25);
+}
+
+body[data-theme="dark"] .detail-map-topbar,
+body[data-theme="dark"] .recommendation-label {
+  color: #b8c7ff;
+}
+
+body[data-theme="dark"] .detail-map-caption strong,
+body[data-theme="dark"] .insight-card strong {
+  color: #eef3ff;
+}
+
+body[data-theme="dark"] .detail-map-caption span,
+body[data-theme="dark"] .detail-map-footer,
+body[data-theme="dark"] .insight-card p,
+body[data-theme="dark"] .recommendation-card p {
+  color: #a8b3cf;
+}
+
+body[data-theme="dark"] .insight-card {
+  background: rgba(30, 46, 82, 0.52);
+  border-color: rgba(121, 143, 196, 0.24);
+}
+
+body[data-theme="dark"] .recommendation-card {
+  background: linear-gradient(180deg, rgba(21, 33, 61, 0.92), rgba(15, 25, 47, 0.95));
+  border-color: rgba(121, 143, 196, 0.24);
+  box-shadow: 0 10px 24px rgba(2, 8, 22, 0.35);
+}
+
+body[data-theme="dark"] .leaflet-control-zoom a {
+  background: rgba(13, 22, 42, 0.94);
+  color: #dfe8ff;
+  border-bottom-color: rgba(121, 143, 196, 0.28);
+}
+
+body[data-theme="dark"] .leaflet-control-zoom a:hover {
+  background: rgba(25, 40, 74, 0.98);
+}
+
+body[data-theme="dark"] .leaflet-popup-content-wrapper,
+body[data-theme="dark"] .leaflet-popup-tip {
+  background: rgba(14, 24, 45, 0.98);
+  color: #e9efff;
+}
+
 body[data-theme="dark"] #theme-toggle {
   background: rgba(255,255,255,0.06);
   color: #c4d0ff;
@@ -1475,6 +1558,13 @@ body[data-theme="dark"] #theme-toggle {
   .hero-card,
   .panel {
     grid-template-columns: 1fr;
+  }
+
+  .country-list {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+    scrollbar-width: auto;
   }
 
   .header-inner {
