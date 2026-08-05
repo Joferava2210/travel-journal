@@ -17,7 +17,7 @@
                        "images/estados-unidos/nyc.jpg",
                        "images/estados-unidos/los-angeles.jpg"
                    ],
-        "region":  "NorteamÃ©rica",
+        "region":  "Norteamérica",
         "tags":  [
                      "ciudad",
                      "cultura"
@@ -43,7 +43,7 @@
                        "images/mexico/teotihuacan.jpg",
                        "images/mexico/cancun.jpg"
                    ],
-        "region":  "Otro",
+        "region":  "Norteamérica",
         "tags":  {
 
                  },
@@ -68,7 +68,7 @@
                        "images/guatemala/antigua.jpg",
                        "images/guatemala/tikal.jpg"
                    ],
-        "region":  "CentroamÃ©rica",
+        "region":  "Centroamérica",
         "tags":  [
                      "aventura",
                      "cultura"
@@ -94,7 +94,7 @@
                        "images/el-salvador/puertadiablo.jpg",
                        "images/el-salvador/boqueron.jpg"
                    ],
-        "region":  "CentroamÃ©rica",
+        "region":  "Centroamérica",
         "tags":  [
                      "naturaleza",
                      "cultura"
@@ -120,7 +120,7 @@
                        "images/costa-rica/poas.jpg",
                        "images/costa-rica/guanacaste.jpg"
                    ],
-        "region":  "CentroamÃ©rica",
+        "region":  "Centroamérica",
         "tags":  [
                      "naturaleza",
                      "playa"
@@ -146,7 +146,7 @@
                        "images/panama/canal.jpg",
                        "images/panama/isla.jpg"
                    ],
-        "region":  "Otro",
+        "region":  "Centroamérica",
         "tags":  {
 
                  },
@@ -171,7 +171,7 @@
                        "images/colombia/cartagena.jpg",
                        "images/colombia/medellin.jpg"
                    ],
-        "region":  "SudamÃ©rica",
+        "region":  "Sudamérica",
         "tags":  [
                      "playa",
                      "ciudad"
@@ -197,7 +197,7 @@
                        "images/peru/machu-picchu.jpg",
                        "images/peru/cusco.jpg"
                    ],
-        "region":  "Otro",
+        "region":  "Sudamérica",
         "tags":  {
 
                  },
@@ -220,7 +220,7 @@
                        "images/paraguay/ciudaddeleste.jpg",
                        "images/paraguay/paraguay.jpg"
                    ],
-        "region":  "SudamÃ©rica",
+        "region":  "Sudamérica",
         "tags":  [
                      "naturaleza",
                      "cultura"
@@ -246,7 +246,7 @@
                        "images/brasil/cristo.jpg",
                        "images/brasil/iguazu.jpg"
                    ],
-        "region":  "SudamÃ©rica",
+        "region":  "Sudamérica",
         "tags":  [
                      "playa",
                      "cultura"
@@ -272,10 +272,10 @@
                        "images/argentina/bombonera.jpg",
                        "images/argentina/mendoza.jpg"
                    ],
-        "region":  "SudamÃ©rica",
+        "region":  "Sudamérica",
         "tags":  [
                      "ciudad",
-                     "gastronomÃ­a"
+                     "gastronomía"
                  ],
         "year":  2022,
         "favorite":  false
@@ -327,7 +327,7 @@
         "region":  "Europa",
         "tags":  [
                      "cultura",
-                     "gastronomÃ­a"
+                     "gastronomía"
                  ],
         "year":  2025,
         "favorite":  false
@@ -350,7 +350,7 @@
                        "images/monaco/monaco.jpg",
                        "images/monaco/casino.jpg"
                    ],
-        "region":  "Otro",
+        "region":  "Europa",
         "tags":  {
 
                  },
@@ -375,7 +375,7 @@
                        "images/belgica/brujas.jpg",
                        "images/belgica/bruselas.jpg"
                    ],
-        "region":  "Otro",
+        "region":  "Europa",
         "tags":  {
 
                  },
@@ -400,7 +400,7 @@
                        "images/paises-bajos/amsterdam.jpg",
                        "images/paises-bajos/molino.jpg"
                    ],
-        "region":  "Otro",
+        "region":  "Europa",
         "tags":  {
 
                  },
@@ -454,7 +454,7 @@
         "region":  "Europa",
         "tags":  [
                      "historia",
-                     "gastronomÃ­a"
+                     "gastronomía"
                  ],
         "year":  2025,
         "favorite":  true
@@ -478,7 +478,7 @@
                    ],
         "region":  "Europa",
         "tags":  [
-                     "montaÃ±a",
+                     "montaña",
                      "naturaleza"
                  ],
         "year":  2025,
@@ -552,7 +552,7 @@
                        "images/espania/barcelona.jpg",
                        "images/espania/madrid.jpg"
                    ],
-        "region":  "Otro",
+        "region":  "Europa",
         "tags":  [
                      "historia",
                      "cultura"
