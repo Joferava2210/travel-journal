@@ -27,25 +27,53 @@
     "Paraguay"
   ],
   "wishlist": [
-    { "country": "Canadá" },
-    { "country": "Argentina", "place": "Ushuaia" },
-    { "country": "Chile" },
-    { "country": "Brasil", "place": "Pantanal" },
-    { "country": "Brasil", "place": "Amazonas" },
-    { "country": "Escocia" },
-    { "country": "Irlanda" },
-    { "country": "Noruega" },
-    { "country": "Islandia" },
-    { "country": "Rusia" },
-    { "country": "Turquía" },
-    { "country": "Kenia" },
-    { "country": "Egipto" },
-    { "country": "Jordania" },
-    { "country": "Sudáfrica" },
-    { "country": "Japón" },
-    { "country": "China" },
-    { "country": "India" },
-    { "country": "Corea del Sur" }
+    {
+      "category": "Naturaleza",
+      "description": "Paisajes extremos, biodiversidad y rutas donde el entorno es el gran protagonista.",
+      "icon": "🌿",
+      "destinations": [
+        { "country": "Canadá" },
+        { "country": "Argentina", "place": "Ushuaia" },
+        { "country": "Chile" },
+        { "country": "Brasil", "place": "Pantanal" },
+        { "country": "Brasil", "place": "Amazonas" },
+        { "country": "Noruega" },
+        { "country": "Islandia" }
+      ]
+    },
+    {
+      "category": "Ciudades",
+      "description": "Capitales y rutas urbanas para vivir barrios, arquitectura y ritmo local desde dentro.",
+      "icon": "🏙️",
+      "destinations": [
+        { "country": "Escocia" },
+        { "country": "Irlanda" },
+        { "country": "Turquía" },
+        { "country": "Japón" },
+        { "country": "China" },
+        { "country": "Corea del Sur" }
+      ]
+    },
+    {
+      "category": "Historia",
+      "description": "Lugares donde el patrimonio, la espiritualidad y las civilizaciones antiguas marcan el viaje.",
+      "icon": "🏛️",
+      "destinations": [
+        { "country": "Rusia" },
+        { "country": "Egipto" },
+        { "country": "Jordania" },
+        { "country": "India" }
+      ]
+    },
+    {
+      "category": "Safari",
+      "description": "Destinos pensados para fauna salvaje, paisaje abierto y experiencias fuera de lo cotidiano.",
+      "icon": "🦁",
+      "destinations": [
+        { "country": "Kenia" },
+        { "country": "Sudáfrica" }
+      ]
+    }
   ],
   "countries": {
     "Estados Unidos": {
