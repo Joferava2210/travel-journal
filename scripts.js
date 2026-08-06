@@ -13,46 +13,115 @@ const continentEurope = document.getElementById('continent-europe');
 const achievementPhotos = document.getElementById('achievement-photos');
 const achievementStories = document.getElementById('achievement-stories');
 const achievementUpdated = document.getElementById('achievement-updated');
+const wishlistGrid = document.getElementById('wishlist-grid');
 let countries = [];
 let filteredCountries = [];
 let activeIndex = 0;
 let detailMap = null;
 let photoLightbox = null;
+let revealObserver = null;
 
-const TOTAL_FLIGHTS = 62;
-
-const countryMapLocations = {
-  'Estados Unidos': { lat: 39.8283, lng: -98.5795, zoom: 4 },
-  'México': { lat: 23.6345, lng: -102.5528, zoom: 5 },
-  'Guatemala': { lat: 15.7835, lng: -90.2308, zoom: 7 },
-  'El Salvador': { lat: 13.7942, lng: -88.8965, zoom: 8 },
-  'Costa Rica': { lat: 9.7489, lng: -83.7534, zoom: 7 },
-  'Panamá': { lat: 8.538, lng: -80.7821, zoom: 7 },
-  'Colombia': { lat: 4.5709, lng: -74.2973, zoom: 5 },
-  'Perú': { lat: -9.19, lng: -75.0152, zoom: 5 },
-  'Paraguay': { lat: -23.4425, lng: -58.4438, zoom: 6 },
-  'Brasil': { lat: -14.235, lng: -51.9253, zoom: 4 },
-  'Argentina': { lat: -38.4161, lng: -63.6167, zoom: 4 },
-  'Inglaterra': { lat: 52.3555, lng: -1.1743, zoom: 6 },
-  'Francia': { lat: 46.6034, lng: 1.8883, zoom: 6 },
-  'Mónaco': { lat: 43.7384, lng: 7.4246, zoom: 10 },
-  'Bélgica': { lat: 50.5039, lng: 4.4699, zoom: 7 },
-  'Países Bajos': { lat: 52.1326, lng: 5.2913, zoom: 7 },
-  'Alemania': { lat: 51.1657, lng: 10.4515, zoom: 6 },
-  'Italia': { lat: 41.8719, lng: 12.5674, zoom: 6 },
-  'Suiza': { lat: 46.8182, lng: 8.2275, zoom: 7 },
-  'Ciudad de Vaticano': { lat: 41.9029, lng: 12.4534, zoom: 13 },
-  'Portugal': { lat: 39.3999, lng: -8.2245, zoom: 6 },
-  'España': { lat: 40.4637, lng: -3.7492, zoom: 6 }
+const defaultSiteContent = {
+  metrics: { totalFlights: 0 },
+  customCountryOrder: [],
+  wishlist: [],
+  countries: {}
 };
+
+let siteContent = { ...defaultSiteContent };
+
+function normalizeForKey(value) {
+  return (value || '')
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function sortCountriesByCustomOrder(countryEntries, order = []) {
+  const customCountryOrderMap = new Map(
+    order.map((countryName, index) => [normalizeForKey(countryName), index])
+  );
+
+  return [...countryEntries].sort((a, b) => {
+    const rankA = customCountryOrderMap.get(normalizeForKey(a.name));
+    const rankB = customCountryOrderMap.get(normalizeForKey(b.name));
+
+    if (rankA !== undefined && rankB !== undefined) return rankA - rankB;
+    if (rankA !== undefined) return -1;
+    if (rankB !== undefined) return 1;
+
+    return a.name.localeCompare(b.name, 'es');
+  });
+}
+
+function renderWishlist() {
+  if (!wishlistGrid) return;
+
+  wishlistGrid.innerHTML = (siteContent.wishlist || []).map((destination) => {
+    const title = destination.place ? `${destination.country}` : destination.country;
+    const subtitle = destination.place ? destination.place : 'Destino completo por descubrir';
+    return `
+      <article class="wishlist-card reveal">
+        <span class="wishlist-badge">Wishlist</span>
+        <h4>${title}</h4>
+        <p>${subtitle}</p>
+      </article>
+    `;
+  }).join('');
+
+  observeReveals(wishlistGrid.querySelectorAll('.reveal'));
+}
+
+function getCountryContentByName(countryName) {
+  const entries = Object.entries(siteContent.countries || {});
+  const normalizedName = normalizeForKey(countryName);
+  const match = entries.find(([name]) => normalizeForKey(name) === normalizedName);
+  return match ? match[1] : {};
+}
+
+function mergeCountryContent(countryEntries) {
+  return countryEntries.map((country) => ({
+    ...country,
+    ...getCountryContentByName(country.name)
+  }));
+}
 
 async function loadCountries() {
   try {
-    const response = await fetch('data/countries.json');
-    if (!response.ok) {
+    const [countriesResponse, siteContentResponse] = await Promise.all([
+      fetch('data/countries.json'),
+      fetch('data/site-content.json')
+    ]);
+
+    if (!countriesResponse.ok) {
       throw new Error('No se pudo cargar data/countries.json');
     }
-    countries = await response.json();
+
+    if (!siteContentResponse.ok) {
+      throw new Error('No se pudo cargar data/site-content.json');
+    }
+
+    const fetchedCountries = await countriesResponse.json();
+    const fetchedSiteContent = await siteContentResponse.json();
+    siteContent = {
+      ...defaultSiteContent,
+      ...fetchedSiteContent,
+      metrics: {
+        ...defaultSiteContent.metrics,
+        ...(fetchedSiteContent.metrics || {})
+      },
+      countries: fetchedSiteContent.countries || {}
+    };
+
+    renderWishlist();
+
+    countries = sortCountriesByCustomOrder(
+      mergeCountryContent(fetchedCountries),
+      siteContent.customCountryOrder || []
+    );
     filteredCountries = countries;
     updateCredibilityMetrics(countries);
     bindSearch();
@@ -84,7 +153,7 @@ function calculateEstimatedKilometers(countryEntries) {
   let totalDistance = 0;
 
   countryEntries.forEach((country) => {
-    const location = countryMapLocations[country.name];
+    const location = country.location;
     if (!location) return;
 
     if (previousLocation) {
@@ -129,7 +198,7 @@ function updateCredibilityMetrics(countryEntries) {
   const numberFormatter = new Intl.NumberFormat('es-ES');
 
   if (metricKilometers) metricKilometers.textContent = `${numberFormatter.format(estimatedKilometers)} km`;
-  if (metricFlights) metricFlights.textContent = numberFormatter.format(TOTAL_FLIGHTS);
+  if (metricFlights) metricFlights.textContent = numberFormatter.format(siteContent.metrics?.totalFlights || 0);
   if (metricContinents) metricContinents.textContent = numberFormatter.format(visitedContinents);
 
   if (continentNorthAmerica) continentNorthAmerica.textContent = numberFormatter.format(regionCount['Norteamérica']);
@@ -374,7 +443,7 @@ function setupDetailPhotoCarousel(photos, countryName) {
 }
 
 function getCountryMapLocation(country) {
-  return countryMapLocations[country.name] || { lat: 20, lng: 0, zoom: 2 };
+  return country.location || { lat: 20, lng: 0, zoom: 2 };
 }
 
 function destroyDetailMap() {
@@ -385,11 +454,7 @@ function destroyDetailMap() {
 }
 
 function normalizeTravelText(value) {
-  return (value || '')
-    .toString()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase();
+  return normalizeForKey(value);
 }
 
 function getCountryTravelTips(country) {
@@ -399,9 +464,9 @@ function getCountryTravelTips(country) {
     bestTime: 'Ideal para viajar en temporada baja o intermedia.'
   };
 
-  if (country.climate) travelTips.climate = country.climate;
-  if (country.estimatedCost) travelTips.estimatedCost = country.estimatedCost;
-  if (country.bestTime) travelTips.bestTime = country.bestTime;
+  if (country.travelTips?.climate) travelTips.climate = country.travelTips.climate;
+  if (country.travelTips?.estimatedCost) travelTips.estimatedCost = country.travelTips.estimatedCost;
+  if (country.travelTips?.bestTime) travelTips.bestTime = country.travelTips.bestTime;
 
   const name = (country.name || '').toLowerCase();
   const region = (country.region || '').toLowerCase();
@@ -428,14 +493,10 @@ function getCountryTravelTips(country) {
 }
 
 function getCountryRecommendations(country) {
-  const name = normalizeTravelText(country.name);
   const region = normalizeTravelText(country.region);
-  const places = normalizeTravelText((country.places || []).join(' '));
-  const activities = normalizeTravelText((country.activities || []).join(' '));
 
   const primaryPlace = country.places?.[0] || 'el destino principal';
   const secondaryPlace = country.places?.[1] || country.places?.[0] || 'otro rincón del país';
-  const thirdPlace = country.places?.[2] || country.places?.[1] || country.places?.[0] || 'un lugar especial';
 
   const recommendation = {
     mustSee: `No te pierdas ${primaryPlace} y alguno de los otros puntos que marcaste en tu ruta.`,
@@ -443,86 +504,22 @@ function getCountryRecommendations(country) {
     pace: 'Reserva tiempo para caminar sin prisa y mezclar visitas principales con momentos espontáneos.'
   };
 
-  if (name.includes('mexico')) {
-    recommendation.mustSee = `No te pierdas ${secondaryPlace === 'otro rincón del país' ? 'Teotihuacán y una tarde de comida callejera auténtica' : `${secondaryPlace} y una tarde de comida callejera auténtica`}.`;
-    recommendation.localTip = 'Pregunta por mercados y antojitos locales; suelen ser el mejor punto para entender la ciudad.';
-    recommendation.pace = 'Combina ruinas, centro urbano y una pausa para comer sin prisas.';
-  } else if (name.includes('costa rica')) {
-    recommendation.mustSee = 'No te pierdas hacer canopy en Monteverde y recorrer una reserva natural o una playa al atardecer.';
-    recommendation.localTip = 'Lleva ropa ligera, bloqueador y pregunta por rutas seguras de senderismo antes de salir.';
-    recommendation.pace = 'Haz base en una zona y deja margen para naturaleza, aventura y descanso.';
-  } else if (name.includes('guatemala')) {
-    recommendation.mustSee = 'No te pierdas Tikal y un recorrido por Antigua o el Lago de Atitlán.';
-    recommendation.localTip = 'Los mercados locales y los traslados tempranos te ayudan a aprovechar mejor el día.';
-    recommendation.pace = 'Divide el viaje entre historia, volcanes y una visita tranquila a pueblos coloniales.';
-  } else if (name.includes('el salvador')) {
-    recommendation.mustSee = 'No te pierdas El Boquerón y una parada en la Puerta del Diablo.';
-    recommendation.localTip = 'Reserva tiempo para probar pupusas en un lugar local y conversar con la gente del área.';
-    recommendation.pace = 'Es un destino ideal para combinar miradores, ciudad y comida en un mismo día.';
-  } else if (name.includes('panama')) {
-    recommendation.mustSee = 'No te pierdas el Canal de Panamá y una escapada a Bocas del Toro o al casco antiguo.';
-    recommendation.localTip = 'Aprovecha las caminatas cortas por la ciudad y deja una tarde para zona costera o islas.';
-    recommendation.pace = 'Mezcla ciudad, canal y descanso junto al mar para que el viaje quede equilibrado.';
-  } else if (name.includes('peru')) {
-    recommendation.mustSee = 'No te pierdas Machu Picchu y un recorrido por Cusco o el Valle Sagrado.';
-    recommendation.localTip = 'Aclimatarte un día antes de subir a zonas altas te cambia por completo la experiencia.';
-    recommendation.pace = 'Alterna ruinas, ciudad y caminatas suaves para no saturarte con la altura.';
-  } else if (name.includes('paraguay')) {
-    recommendation.mustSee = 'No te pierdas Ciudad del Este y la triple frontera.';
-    recommendation.localTip = 'Cruza temprano, compara precios con calma y deja espacio para caminar la frontera a pie.';
-    recommendation.pace = 'Funciona mejor como viaje breve pero muy activo entre compras y frontera.';
-  } else if (name.includes('brasil')) {
-    recommendation.mustSee = 'No te pierdas las cataratas del Iguazú y una tarde en Río de Janeiro.';
-    recommendation.localTip = 'Combina playa, miradores y traslados con tiempo; el tamaño del país hace que todo tome más de lo previsto.';
-    recommendation.pace = 'Divide el viaje por zonas para aprovechar mejor ciudad, playa y naturaleza.';
-  } else if (name.includes('argentina')) {
-    recommendation.mustSee = 'No te pierdas Buenos Aires, Mendoza y una visita a las Cataratas del Iguazú.';
-    recommendation.localTip = 'Reserva tiempo para asado, caminatas urbanas y algún plan de clima frío si vas en temporada adecuada.';
-    recommendation.pace = 'Mejor con una ruta clara entre ciudad, vino y naturaleza para que el viaje no se disperse.';
-  } else if (name.includes('inglaterra')) {
-    recommendation.mustSee = 'No te pierdas Londres y el Harry Potter Studios, además de algún paseo histórico.';
-    recommendation.localTip = 'Usa transporte público y deja margen para museos, plazas y barrios con mucha vida.';
-    recommendation.pace = 'Es un destino ideal para alternar historia, estudio de cine y caminatas urbanas.';
-  } else if (name.includes('francia')) {
-    recommendation.mustSee = `No te pierdas París y alguna salida a ${thirdPlace}.`;
-    recommendation.localTip = 'Aprovecha museos, cafeterías y paseos largos por la ciudad; allí se vive el viaje con calma.';
-    recommendation.pace = 'Combina monumentos, comida y un paseo menos planificado para que el viaje se sienta completo.';
-  } else if (name.includes('italia')) {
-    recommendation.mustSee = 'No te pierdas el Coliseo Romano y el recorrido entre Roma, Venecia y Florencia.';
-    recommendation.localTip = 'Deja espacio para comidas largas y traslados entre ciudades; vale la pena ir sin prisa.';
-    recommendation.pace = 'Tu ruta funciona mejor como viaje cultural con pausas para disfrutar cada ciudad.';
-  } else if (name.includes('espana')) {
-    recommendation.mustSee = 'No te pierdas los estadios, el centro histórico y una caminata por Madrid o Barcelona.';
-    recommendation.localTip = 'Aprovecha los horarios largos de comida y la vida nocturna en barrios céntricos.';
-    recommendation.pace = 'Haz una mezcla de ciudad, fútbol y paseo urbano para que el viaje quede bien redondo.';
-  } else if (region.includes('europa')) {
+  if (country.recommendations?.mustSee) recommendation.mustSee = country.recommendations.mustSee;
+  if (country.recommendations?.localTip) recommendation.localTip = country.recommendations.localTip;
+  if (country.recommendations?.pace) recommendation.pace = country.recommendations.pace;
+
+  if (!country.recommendations && region.includes('europa')) {
     recommendation.mustSee = `No te pierdas el casco histórico de ${primaryPlace} y una caminata sin plan fijo por sus calles.`;
     recommendation.localTip = 'Usa transporte público y reserva tiempo para cafés, plazas y barrios antiguos.';
     recommendation.pace = 'Conviene viajar con poca rigidez para dejar espacio a museos y rincones imprevistos.';
-  } else if (region.includes('centroamerica')) {
+  } else if (!country.recommendations && region.includes('centroamerica')) {
     recommendation.mustSee = `No te pierdas ${primaryPlace} y los paisajes o mercados que rodean esa zona.`;
     recommendation.localTip = 'Pregunta por rutas tempranas y lleva siempre algo de efectivo para comer y moverte.';
     recommendation.pace = 'Mejor en un ritmo mixto: naturaleza por la mañana y ciudad o comida por la tarde.';
-  } else if (region.includes('sudamerica')) {
+  } else if (!country.recommendations && region.includes('sudamerica')) {
     recommendation.mustSee = `No te pierdas ${primaryPlace} y al menos otro punto de tu lista, como ${secondaryPlace}.`;
     recommendation.localTip = 'Ajusta tus recorridos por zonas y clima; las distancias entre lugares suelen ser mayores de lo que parecen.';
     recommendation.pace = 'Divide el viaje por bloques para que ciudad, naturaleza y gastronomía no se sientan apurados.';
-  }
-
-  if (places.includes('playa') || activities.includes('playa')) {
-    recommendation.mustSee = 'No te pierdas una puesta de sol frente al mar y deja tiempo para una caminata tranquila por la costa.';
-  }
-
-  if (places.includes('canopy') || activities.includes('canopy')) {
-    recommendation.mustSee = 'No te pierdas hacer canopy y combinarlo con una caminata por la zona natural que ya marcaste.';
-  }
-
-  if (places.includes('mercado') || activities.includes('mercado')) {
-    recommendation.localTip = 'Tu mejor consejo local aquí es ir temprano al mercado, porque allí se siente más auténtico el destino.';
-  }
-
-  if (places.includes('estadio') || activities.includes('estadio') || activities.includes('futbol')) {
-    recommendation.mustSee = 'No te pierdas el estadio o la visita deportiva que marcaste; suele ser uno de los momentos más memorables.';
   }
 
   return recommendation;
@@ -672,18 +669,30 @@ function setupThemeToggle() {
   });
 }
 
+function observeReveals(elements) {
+  if (!revealObserver || !elements?.length) {
+    return;
+  }
+
+  elements.forEach((item) => {
+    if (!item.classList.contains('visible')) {
+      revealObserver.observe(item);
+    }
+  });
+}
+
 function setupRevealObserver() {
   const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+  revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        revealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
 
-  reveals.forEach(item => observer.observe(item));
+  observeReveals(reveals);
 }
 
 function setupHeroCarousel() {
@@ -769,4 +778,5 @@ function setupHeroCarousel() {
 loadCountries();
 setupThemeToggle();
 setupRevealObserver();
+renderWishlist();
 setupHeroCarousel();

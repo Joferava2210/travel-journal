@@ -20,7 +20,7 @@ $mapping = @{
     'Alemania' = @{ region = 'Europa'; tags = @('historia','ciudad'); year = 2023; favorite = $false }
     'Italia' = @{ region = 'Europa'; tags = @('historia','gastronomía'); year = 2021; favorite = $true }
     'Suiza' = @{ region = 'Europa'; tags = @('montaña','naturaleza'); year = 2020; favorite = $false }
-    'Ciudad de Vaticano' = @{ region = 'Europa'; tags = @('historia','cultura'); year = 2024; favorite = $false }
+    'Ciudad del Vaticano' = @{ region = 'Europa'; tags = @('historia','cultura'); year = 2024; favorite = $false }
     'Portugal' = @{ region = 'Europa'; tags = @('playa','cultura'); year = 2023; favorite = $false }
     'España' = @{ region = 'Europa'; tags = @('gastronomía','cultura'); year = 2022; favorite = $false }
 }
