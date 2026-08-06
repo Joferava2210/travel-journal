@@ -37,6 +37,33 @@ const defaultSiteContent = {
 
 let siteContent = { ...defaultSiteContent };
 
+async function fetchJsonWithFallback(paths) {
+  let lastError = null;
+
+  for (const path of paths) {
+    try {
+      const response = await fetch(path, { cache: 'no-store' });
+      if (!response.ok) {
+        lastError = new Error(`No se pudo cargar ${path}`);
+        continue;
+      }
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error('No fue posible cargar el contenido del sitio.');
+}
+
+function getDataPaths(fileName) {
+  return [
+    `data/${fileName}`,
+    `./data/${fileName}`,
+    `/travel-journal/data/${fileName}`
+  ];
+}
+
 function normalizeForKey(value) {
   return (value || '')
     .toString()
@@ -116,21 +143,11 @@ function mergeCountryContent(countryEntries) {
 
 async function loadCountries() {
   try {
-    const [countriesResponse, siteContentResponse] = await Promise.all([
-      fetch('data/countries.json'),
-      fetch('data/site-content.json')
+    const [fetchedCountries, fetchedSiteContent] = await Promise.all([
+      fetchJsonWithFallback(getDataPaths('countries.json')),
+      fetchJsonWithFallback(getDataPaths('site-content.json'))
     ]);
 
-    if (!countriesResponse.ok) {
-      throw new Error('No se pudo cargar data/countries.json');
-    }
-
-    if (!siteContentResponse.ok) {
-      throw new Error('No se pudo cargar data/site-content.json');
-    }
-
-    const fetchedCountries = await countriesResponse.json();
-    const fetchedSiteContent = await siteContentResponse.json();
     siteContent = {
       ...defaultSiteContent,
       ...fetchedSiteContent,
@@ -152,7 +169,12 @@ async function loadCountries() {
     bindSearch();
     renderCountryList();
   } catch (error) {
-    countryList.innerHTML = `<p class="error">${error.message}</p>`;
+    const runningFromLocalFile = window.location.protocol === 'file:';
+    const baseMessage = runningFromLocalFile
+      ? 'En móvil, esta app no puede cargar JSON abriendo index.html directamente. Ábrela desde GitHub Pages o un servidor local.'
+      : (error?.message || 'No se pudo cargar la información de viajes.');
+
+    countryList.innerHTML = `<p class="error">${baseMessage}</p>`;
     countrySummary.textContent = 'No hay países disponibles';
     if (totalCountries) totalCountries.textContent = '0';
   }
@@ -756,7 +778,12 @@ function setupThemeToggle() {
 }
 
 function observeReveals(elements) {
-  if (!revealObserver || !elements?.length) {
+  if (!elements?.length) {
+    return;
+  }
+
+  if (!revealObserver) {
+    elements.forEach((item) => item.classList.add('visible'));
     return;
   }
 
@@ -769,6 +796,12 @@ function observeReveals(elements) {
 
 function setupRevealObserver() {
   const reveals = document.querySelectorAll('.reveal');
+
+  if (typeof window.IntersectionObserver !== 'function') {
+    reveals.forEach((item) => item.classList.add('visible'));
+    return;
+  }
+
   revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
