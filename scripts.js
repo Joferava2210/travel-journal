@@ -13,6 +13,10 @@ const continentEurope = document.getElementById('continent-europe');
 const achievementPhotos = document.getElementById('achievement-photos');
 const achievementStories = document.getElementById('achievement-stories');
 const achievementUpdated = document.getElementById('achievement-updated');
+const achievementFirstCountry = document.getElementById('achievement-first-country');
+const achievementLatestCountry = document.getElementById('achievement-latest-country');
+const achievementFavoriteDestination = document.getElementById('achievement-favorite-destination');
+const achievementMostTraveledContinent = document.getElementById('achievement-most-traveled-continent');
 const wishlistGrid = document.getElementById('wishlist-grid');
 let countries = [];
 let filteredCountries = [];
@@ -22,7 +26,10 @@ let photoLightbox = null;
 let revealObserver = null;
 
 const defaultSiteContent = {
-  metrics: { totalFlights: 0 },
+  metrics: {
+    totalFlights: 0,
+    favoriteDestination: ''
+  },
   customCountryOrder: [],
   wishlist: [],
   countries: {}
@@ -60,15 +67,33 @@ function sortCountriesByCustomOrder(countryEntries, order = []) {
 function renderWishlist() {
   if (!wishlistGrid) return;
 
-  wishlistGrid.innerHTML = (siteContent.wishlist || []).map((destination) => {
-    const title = destination.place ? `${destination.country}` : destination.country;
-    const subtitle = destination.place ? destination.place : 'Destino completo por descubrir';
+  wishlistGrid.innerHTML = (siteContent.wishlist || []).map((group) => {
+    const destinations = (group.destinations || []).map((destination) => {
+      const title = destination.place ? `${destination.country}` : destination.country;
+      const subtitle = destination.place ? destination.place : 'Destino completo por descubrir';
+
+      return `
+        <article class="wishlist-card">
+          <h5>${title}</h5>
+          <p>${subtitle}</p>
+        </article>
+      `;
+    }).join('');
+
     return `
-      <article class="wishlist-card reveal">
-        <span class="wishlist-badge">Wishlist</span>
-        <h4>${title}</h4>
-        <p>${subtitle}</p>
-      </article>
+      <section class="wishlist-group reveal">
+        <div class="wishlist-group-header">
+          <span class="wishlist-group-icon" aria-hidden="true">${group.icon || '✈️'}</span>
+          <div>
+            <span class="wishlist-badge">${group.category || 'Wishlist'}</span>
+            <h4>${group.category || 'Por visitar'}</h4>
+            <p>${group.description || ''}</p>
+          </div>
+        </div>
+        <div class="wishlist-destinations-grid">
+          ${destinations}
+        </div>
+      </section>
     `;
   }).join('');
 
@@ -195,6 +220,20 @@ function updateCredibilityMetrics(countryEntries) {
   const totalPhotos = countryEntries.reduce((sum, country) => sum + (country.photos?.length || 0), 0);
   const totalStories = countryEntries.reduce((sum, country) => sum + (country.experiences ? 1 : 0), 0);
   const latestYear = countryEntries.reduce((max, country) => Math.max(max, Number(country.year) || 0), 0);
+  const sortedByYear = [...countryEntries]
+    .filter(country => Number(country.year))
+    .sort((a, b) => Number(a.year) - Number(b.year));
+  const firstVisitedCountry = sortedByYear[0]?.name || 'N/A';
+  const latestVisitedCountry = sortedByYear[sortedByYear.length - 1]?.name || 'N/A';
+  const favoriteDestination = siteContent.metrics?.favoriteDestination
+    || countryEntries.find(country => country.favorite)?.name
+    || 'N/A';
+  const continentCount = {
+    'América': regionCount['Norteamérica'] + regionCount['Centroamérica'] + regionCount['Sudamérica'],
+    'Europa': regionCount['Europa']
+  };
+  const mostTraveledContinent = Object.entries(continentCount)
+    .sort((a, b) => b[1] - a[1])[0]?.[0] || 'N/A';
   const numberFormatter = new Intl.NumberFormat('es-ES');
 
   if (metricKilometers) metricKilometers.textContent = `${numberFormatter.format(estimatedKilometers)} km`;
@@ -209,6 +248,10 @@ function updateCredibilityMetrics(countryEntries) {
   if (achievementPhotos) achievementPhotos.textContent = numberFormatter.format(totalPhotos);
   if (achievementStories) achievementStories.textContent = numberFormatter.format(totalStories);
   if (achievementUpdated) achievementUpdated.textContent = latestYear > 0 ? latestYear.toString() : 'N/A';
+  if (achievementFirstCountry) achievementFirstCountry.textContent = firstVisitedCountry;
+  if (achievementLatestCountry) achievementLatestCountry.textContent = latestVisitedCountry;
+  if (achievementFavoriteDestination) achievementFavoriteDestination.textContent = favoriteDestination;
+  if (achievementMostTraveledContinent) achievementMostTraveledContinent.textContent = mostTraveledContinent;
 }
 
 function bindSearch() {
@@ -290,6 +333,45 @@ function renderCountryList() {
   });
 
   renderCountryDetail(filteredCountries[activeIndex]);
+}
+
+function animateDetailPanelEntry() {
+  const detailPanel = countryDetail.querySelector('.detail-panel');
+  if (!detailPanel) {
+    return;
+  }
+
+  detailPanel.classList.add('detail-panel-enter');
+  requestAnimationFrame(() => {
+    detailPanel.classList.add('detail-panel-enter-active');
+  });
+
+  window.setTimeout(() => {
+    detailPanel.classList.remove('detail-panel-enter', 'detail-panel-enter-active');
+  }, 420);
+}
+
+function swapCarouselImage(image, nextSrc, nextAlt) {
+  if (!image || !nextSrc) {
+    return;
+  }
+
+  image.classList.add('is-swapping');
+
+  const finishSwap = () => {
+    image.classList.remove('is-swapping');
+    image.removeEventListener('load', finishSwap);
+  };
+
+  image.addEventListener('load', finishSwap, { once: true });
+  image.src = nextSrc;
+  image.alt = nextAlt;
+
+  if (image.complete) {
+    requestAnimationFrame(() => {
+      image.classList.remove('is-swapping');
+    });
+  }
 }
 
 
@@ -417,8 +499,11 @@ function setupDetailPhotoCarousel(photos, countryName) {
   let currentPhotoIndex = 0;
 
   const updateCarousel = () => {
-    image.src = photos[currentPhotoIndex];
-    image.alt = `Foto ${currentPhotoIndex + 1} de ${countryName}`;
+    swapCarouselImage(
+      image,
+      photos[currentPhotoIndex],
+      `Foto ${currentPhotoIndex + 1} de ${countryName}`
+    );
     thumbButtons.forEach((thumb, index) => {
       thumb.classList.toggle('active', index === currentPhotoIndex);
     });
@@ -625,6 +710,7 @@ function renderCountryDetail(country) {
 
   setupDetailPhotoCarousel(country.photos, country.name);
   setupDetailPhotoLightbox();
+  animateDetailPanelEntry();
 
   destroyDetailMap();
 
