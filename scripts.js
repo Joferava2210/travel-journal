@@ -802,6 +802,8 @@ function setupRevealObserver() {
     return;
   }
 
+  document.body.classList.add('reveal-enabled');
+
   revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
