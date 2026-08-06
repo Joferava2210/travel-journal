@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Travel Journal: un diario visual de viajes con países, experiencias, fotos y recuerdos de destinos alrededor del mundo." />
+  <meta name="keywords" content="viajes, travel journal, destinos, experiencias de viaje, países visitados, viaje por el mundo" />
+  <meta name="author" content="Joferava" />
+  <meta property="og:title" content="Travel Journal | Diario de viajes" />
+  <meta property="og:description" content="Explora destinos, experiencias y recuerdos de viaje en un diario visual y elegante." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://joferava2210.github.io/travel-journal/images/profile-photo.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Travel Journal | Diario de viajes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div>
+        <a class="brand" href="#" aria-label="Inicio de Travel Journal">
+          <span class="brand-mark" aria-hidden="true">✈️</span>
+          <div>
+            <h1>Travel Journal</h1>
+            <p>Diario de mis viajes por el mundo.</p>
+          </div>
+        </a>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle" type="button" aria-label="Cambiar tema">Modo oscuro</button>
+      </div>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="#destinos">Destinos</a>
+        <a href="#experiencias">Experiencias</a>
+        <a href="#sobremi">Sobre mí</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-card reveal">
+      <div class="hero-copy">
+        <p class="eyebrow">Explora mis viajes</p>
+        <h2>Más de 20 países, historias únicas y fotos memorables.</h2>
+        <p>Encuentra cada país que he visitado, descubre mis actividades favoritas y conserva tus recuerdos de viaje en un espacio privado y elegante.</p>
+        <div class="hero-stats">
+          <div>
+            <strong id="total-countries">0</strong>
+            <span>Países visitados</span>
+          </div>
+          <div>
+            <strong>+20</strong>
+            <span>Experiencias reales</span>
+          </div>
+          <div>
+            <strong>Privado</strong>
+            <span>Edición controlada</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-carousel">
+        <div class="hero-slide active" style="background-image: url('images/estados-unidos/centralpark.jpg');">
+          <div class="hero-slide-copy">
+            <span>Gran aventura urbana</span>
+            <h3>Ciudades que inspiran</h3>
+          </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('images/costa-rica/guanacaste.jpg');" role="img" aria-label="Paisaje natural de Costa Rica con montañas y rutas de aventura">
+          <div class="hero-slide-copy">
+            <span>Escapadas naturales</span>
+            <h3>Rutas entre montañas y lagos</h3>
+          </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('images/guatemala/tikal.jpg');" role="img" aria-label="Ruinas de Tikal en Guatemala, un destino de historia y cultura">
+          <div class="hero-slide-copy">
+            <span>Momentos memorables</span>
+            <h3>Atardeceres, historia y cultura</h3>
+          </div>
+        </div>
+        <button class="carousel-control carousel-prev" id="carousel-prev" type="button" aria-label="Foto anterior">←</button>
+        <button class="carousel-control carousel-next" id="carousel-next" type="button" aria-label="Siguiente foto">→</button>
+        <div class="carousel-dots" id="carousel-dots"></div>
+        <div class="carousel-thumbs" id="carousel-thumbs"></div>
+      </div>
+    </section>
+
+    <section class="panel" id="destinos">
+      <div class="panel-left">
+        <div class="panel-header">
+          <div>
+            <h3>Países visitados</h3>
+            <p id="country-summary">Cargando países...</p>
+          </div>
+          <div class="search-group">
+            <label for="search-country">Buscar país</label>
+            <input id="search-country" type="search" placeholder="Escribe el nombre de un país" autocomplete="off" />
+          </div>
+        </div>
+        <div id="country-list" class="country-list"></div>
+      </div>
+
+      <div class="panel-right">
+        <div id="country-detail" class="country-detail">
+          <div class="detail-empty">
+            <h3>Selecciona un país</h3>
+            <p>Puedes ver aquí descripción, lugares destacados, actividades y fotos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="experiencias">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Experiencias destacadas</p>
+          <h3>Momentos que definieron mis viajes</h3>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <div class="feature-header">
+            <span class="feature-icon">🌍</span>
+            <h4>Aventura y descubrimiento</h4>
+          </div>
+          <p>Explorar nuevos lugares siempre ha sido más que ver paisajes: es conocer historias, tradiciones y personas que dejan huella.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-header">
+            <span class="feature-icon">📸</span>
+            <h4>Fotografía con sentido</h4>
+          </div>
+          <p>Cada imagen representa una vivencia concreta: desde puestas de sol urbanas hasta rutas naturales inolvidables.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-header">
+            <span class="feature-icon">🧭</span>
+            <h4>Viajes pensados</h4>
+          </div>
+          <p>Me gusta planificar destinos que conecten cultura, gastronomía y experiencias únicas, siempre con espacio para la espontaneidad.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="sobremi">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Sobre mí</p>
+          <h3>Este proyecto refleja mi pasión por viajar</h3>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="profile-card reveal">
+          <img class="profile-photo" src="images/profile-photo.jpg" alt="Fotografía personal del autor del diario de viajes" />
+          <div>
+            <h4>Soy viajero y contador de historias</h4>
+            <p>Me encanta descubrir nuevas culturas, registrar cada detalle y mantener un diario visual de los destinos que más me impactan.</p>
+            <ul>
+              <li>+20 países visitados</li>
+              <li>Aficionado a la fotografía de viajes</li>
+              <li>Interés en experiencias locales auténticas</li>
+            </ul>
+          </div>
+        </div>
+        <div class="about-copy reveal">
+          <p>Soy un viajero curioso que documenta cada destino con fotografías, notas y recomendaciones personales. Me encanta combinar cultura, gastronomía y paisaje en cada ruta para crear recuerdos completos y auténticos.</p>
+          <div class="story-block">
+            <p class="story-eyebrow">Mi historia</p>
+            <h4 class="story-title">Un diario pensado para recordar y planear.</h4>
+            <p>Este proyecto nació para capturar las experiencias de cada viaje, desde el primer destino hasta las rutas que aún están por descubrir.</p>
+            <div class="timeline">
+              <article class="timeline-item">
+                <span class="timeline-year">2022</span>
+                <div>
+                  <strong>Inicio de la aventura</strong>
+                  <p>Mi primer viaje internacional hecho por mi cuenta me inspiró a documentar cada experiencia con fotos, notas y recomendaciones.</p>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-year">2025</span>
+                <div>
+                  <strong>Explorando nuevas culturas</strong>
+                  <p>Ruta por varias ciudades, donde aprendí a conectar la fotografía con cada historia local.</p>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-year">2026</span>
+                <div>
+                  <strong>Diario más profesional</strong>
+                  <p>Este sitio se convirtió en un espacio organizado y elegante para mis recuerdos de viaje.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="about-highlights">
+            <div>
+              <span class="about-badge">✨</span>
+              <strong>Recuerdos bien organizados</strong>
+              <span>Cada destino conserva su propia historia, con lugares, sensaciones y fotos que lo hacen único.</span>
+            </div>
+            <div>
+              <span class="about-badge">🎯</span>
+              <strong>Viajes con identidad</strong>
+              <span>Un espacio pensado para acompañar cada experiencia con la emoción de volver a vivirla.</span>
+            </div>
+            <div>
+              <span class="about-badge">🌿</span>
+              <strong>Una mirada más personal</strong>
+              <span>Más que listar lugares, este diario recoge la esencia de cada viaje y de cada camino recorrido.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section achievements-section reveal">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Logros de viaje</p>
+          <h3>Lo que ya logré con este proyecto</h3>
+        </div>
+      </div>
+      <div class="achievements-grid">
+        <article class="achievement-card reveal">
+          <strong>20+ países</strong>
+          <p>Registro completo de todos los países que he visitado, listos para mostrar y actualizar.</p>
+        </article>
+        <article class="achievement-card reveal">
+          <strong>Más de 100 experiencias</strong>
+          <p>Historias, actividades y momentos destacados que documentan cada viaje.</p>
+        </article>
+        <article class="achievement-card reveal">
+          <strong>Diseño profesional</strong>
+          <p>Interfaz cuidada, responsive y con modo oscuro para una experiencia elegante.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section credibility-section reveal" id="credibilidad">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Credibilidad</p>
+          <h3>Métricas reales de mis viajes</h3>
+        </div>
+      </div>
+
+      <div class="credibility-grid">
+        <article class="credibility-card reveal">
+          <strong id="metric-km">0 km</strong>
+          <p>Kilómetros recorridos (estimados)</p>
+        </article>
+        <article class="credibility-card reveal">
+          <strong id="metric-flights">62</strong>
+          <p>Vuelos realizados</p>
+        </article>
+        <article class="credibility-card reveal">
+          <strong id="metric-continents">0</strong>
+          <p>Continentes explorados</p>
+        </article>
+      </div>
+
+      <div class="credibility-detail-grid">
+        <article class="continent-breakdown reveal">
+          <h4>Países por región</h4>
+          <ul>
+            <li><span>Norteamérica</span><strong id="continent-north-america">0</strong></li>
+            <li><span>Centroamérica</span><strong id="continent-central-america">0</strong></li>
+            <li><span>Sudamérica</span><strong id="continent-south-america">0</strong></li>
+            <li><span>Europa</span><strong id="continent-europe">0</strong></li>
+          </ul>
+        </article>
+
+        <article class="personal-achievements reveal">
+          <h4>Logros y sello personal</h4>
+          <div class="personal-achievements-grid">
+            <div class="personal-achievement-item">
+              <strong id="achievement-photos">0</strong>
+              <span>Fotografías de viajes</span>
+            </div>
+            <div class="personal-achievement-item">
+              <strong id="achievement-stories">0</strong>
+              <span>Historias escritas</span>
+            </div>
+            <div class="personal-achievement-item">
+              <strong id="achievement-updated">0</strong>
+              <span>Diario actualizado</span>
+            </div>
+            <div class="personal-achievement-item">
+              <strong id="achievement-first-country">-</strong>
+              <span>Primer país visitado</span>
+            </div>
+            <div class="personal-achievement-item">
+              <strong id="achievement-latest-country">-</strong>
+              <span>Último país visitado</span>
+            </div>
+            <div class="personal-achievement-item">
+              <strong id="achievement-favorite-destination">-</strong>
+              <span>Destino favorito</span>
+            </div>
+            <div class="personal-achievement-item">
+              <strong id="achievement-most-traveled-continent">-</strong>
+              <span>Continente más recorrido</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section destinations-section reveal">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Mejores destinos</p>
+          <h3>Algunos de los lugares que más me marcaron</h3>
+        </div>
+      </div>
+      <div class="destinations-grid">
+        <article class="destination-card reveal">
+          <span class="destination-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20h16" />
+              <path d="M8 16l4-8 4 8" />
+            </svg>
+          </span>
+          <h4>Los Andes</h4>
+          <p>Montañas, cultura andina y paisajes que mezclan historia y naturaleza.</p>
+        </article>
+        <article class="destination-card reveal">
+          <span class="destination-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12h18" />
+              <path d="M5 20h14" />
+              <path d="M7 12l2-8h6l2 8" />
+            </svg>
+          </span>
+          <h4>Caribe</h4>
+          <p>Playas, mar turquesa y pueblos costeros con sabor local e inolvidables puestas de sol.</p>
+        </article>
+        <article class="destination-card reveal">
+          <span class="destination-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20h16" />
+              <path d="M6 20V10a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10" />
+              <path d="M12 10V4" />
+              <path d="M9 7h6" />
+            </svg>
+          </span>
+          <h4>Europa histórica</h4>
+          <p>Ciudades con historia, museos y arquitectura que cuentan siglos de vivencias.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section wishlist-section reveal" id="porvisitar">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Por visitar</p>
+          <h3>Destinos y lugares que siguen en mi lista</h3>
+        </div>
+      </div>
+      <div id="wishlist-grid" class="wishlist-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p>Hecho para guardar recuerdos, descubrir nuevos destinos y volver a vivir cada viaje.</p>
+        <p>© 2026 — Joferava</p>
+      </div>
+      <div class="footer-links" aria-label="Enlaces de contacto">
+        <a href="mailto:jfelipe221095@gmail.com">Email</a>
+        <a href="https://www.instagram.com/jfelipe.ramirez/" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/josé-felipe-ramírez-vargas-710420186" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://www.facebook.com/josefelipe.ramirezz/" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://github.com/Joferava2210" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+</body>
+</html>

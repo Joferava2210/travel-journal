@@ -1,0 +1,366 @@
+{
+  "metrics": {
+    "totalFlights": 62
+  },
+  "customCountryOrder": [
+    "Costa Rica",
+    "Estados Unidos",
+    "México",
+    "Argentina",
+    "Colombia",
+    "Brasil",
+    "Guatemala",
+    "El Salvador",
+    "Panamá",
+    "Perú",
+    "Inglaterra",
+    "Francia",
+    "Mónaco",
+    "Bélgica",
+    "Países Bajos",
+    "Alemania",
+    "Italia",
+    "Suiza",
+    "Ciudad del Vaticano",
+    "Portugal",
+    "España",
+    "Paraguay"
+  ],
+  "wishlist": [
+    {
+      "category": "Naturaleza",
+      "description": "Paisajes extremos, biodiversidad y rutas donde el entorno es el gran protagonista.",
+      "icon": "🌿",
+      "destinations": [
+        { "country": "Canadá" },
+        { "country": "Argentina", "place": "Ushuaia" },
+        { "country": "Chile" },
+        { "country": "Brasil", "place": "Pantanal" },
+        { "country": "Brasil", "place": "Amazonas" },
+        { "country": "Noruega" },
+        { "country": "Islandia" }
+      ]
+    },
+    {
+      "category": "Ciudades",
+      "description": "Capitales y rutas urbanas para vivir barrios, arquitectura y ritmo local desde dentro.",
+      "icon": "🏙️",
+      "destinations": [
+        { "country": "Escocia" },
+        { "country": "Irlanda" },
+        { "country": "Turquía" },
+        { "country": "Japón" },
+        { "country": "China" },
+        { "country": "Corea del Sur" }
+      ]
+    },
+    {
+      "category": "Historia",
+      "description": "Lugares donde el patrimonio, la espiritualidad y las civilizaciones antiguas marcan el viaje.",
+      "icon": "🏛️",
+      "destinations": [
+        { "country": "Rusia" },
+        { "country": "Egipto" },
+        { "country": "Jordania" },
+        { "country": "India" }
+      ]
+    },
+    {
+      "category": "Safari",
+      "description": "Destinos pensados para fauna salvaje, paisaje abierto y experiencias fuera de lo cotidiano.",
+      "icon": "🦁",
+      "destinations": [
+        { "country": "Kenia" },
+        { "country": "Sudáfrica" }
+      ]
+    }
+  ],
+  "countries": {
+    "Estados Unidos": {
+      "location": { "lat": 39.8283, "lng": -98.5795, "zoom": 4 },
+      "travelTips": {
+        "climate": "Clima variado según la región y la época del año.",
+        "estimatedCost": "Costo medio-alto si se incluyen ciudades y parques temáticos.",
+        "bestTime": "Mejor entre primavera y otoño."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Nueva York, Los Ángeles y una jornada completa en los parques de Orlando.",
+        "localTip": "Reserva con tiempo actividades populares y distribuye el viaje por ciudad para evitar traslados pesados.",
+        "pace": "Conviene alternar días intensos de ciudad con jornadas más ligeras para disfrutar mejor cada parada."
+      }
+    },
+    "México": {
+      "location": { "lat": 23.6345, "lng": -102.5528, "zoom": 5 },
+      "travelTips": {
+        "climate": "Clima cálido a templado según la zona, con temporadas de lluvia marcadas.",
+        "estimatedCost": "Costo moderado, con muy buena relación entre experiencia y presupuesto.",
+        "bestTime": "Ideal entre noviembre y abril."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Teotihuacán y una tarde entera de gastronomía local en Ciudad de México o Cancún.",
+        "localTip": "Pregunta por mercados y antojitos locales; suelen ser la mejor puerta de entrada a la cultura del lugar.",
+        "pace": "Combina ruinas, ciudad y descanso para que el viaje no se sienta apurado."
+      }
+    },
+    "Guatemala": {
+      "location": { "lat": 15.7835, "lng": -90.2308, "zoom": 7 },
+      "travelTips": {
+        "climate": "Templado a tropical, con cambios notorios entre altura y selva.",
+        "estimatedCost": "Costo moderado y accesible para rutas culturales y de naturaleza.",
+        "bestTime": "Muy buena entre noviembre y abril."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Tikal y una combinación entre Antigua y el Lago de Atitlán.",
+        "localTip": "Los mercados locales y los traslados temprano ayudan a aprovechar mejor el día y evitar multitudes.",
+        "pace": "Divide el viaje entre historia, volcanes y pueblos coloniales para disfrutarlo con más calma."
+      }
+    },
+    "El Salvador": {
+      "location": { "lat": 13.7942, "lng": -88.8965, "zoom": 8 },
+      "travelTips": {
+        "climate": "Cálido durante gran parte del año, con mañanas y tardes favorables para recorrer miradores.",
+        "estimatedCost": "Costo moderado para escapadas urbanas y de naturaleza.",
+        "bestTime": "Entre noviembre y abril suele ser el periodo más cómodo para viajar."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas El Boquerón y una parada en la Puerta del Diablo.",
+        "localTip": "Reserva tiempo para probar pupusas en un lugar local y preguntar por parques o rutas cercanas.",
+        "pace": "Es ideal para combinar miradores, ciudad y comida en un mismo día sin sentirlo demasiado pesado."
+      }
+    },
+    "Costa Rica": {
+      "location": { "lat": 9.7489, "lng": -83.7534, "zoom": 7 },
+      "travelTips": {
+        "climate": "Tropical y cálido, con microclimas entre montaña, volcán y costa.",
+        "estimatedCost": "Costo moderado a medio-alto según la zona y el tipo de aventura.",
+        "bestTime": "Ideal entre diciembre y abril para recorrer con menos lluvia."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas hacer canopy en Monteverde y combinarlo con una visita a Guanacaste o La Fortuna.",
+        "localTip": "Lleva ropa ligera, bloqueador y consulta condiciones de senderos si vas a naturaleza o volcanes.",
+        "pace": "Haz base por zonas y deja margen para aventura, naturaleza y descanso en la misma ruta."
+      }
+    },
+    "Panamá": {
+      "location": { "lat": 8.538, "lng": -80.7821, "zoom": 7 },
+      "travelTips": {
+        "climate": "Tropical y húmedo en muchas zonas, con periodos lluviosos marcados.",
+        "estimatedCost": "Costo medio, especialmente equilibrado entre ciudad e islas.",
+        "bestTime": "Mejor entre diciembre y abril."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas el Canal de Panamá y una escapada a Bocas del Toro o al casco antiguo.",
+        "localTip": "Aprovecha las caminatas cortas por la ciudad y deja una tarde completa para la parte costera o insular.",
+        "pace": "Funciona mejor si mezclas ciudad, canal y descanso junto al mar."
+      }
+    },
+    "Colombia": {
+      "location": { "lat": 4.5709, "lng": -74.2973, "zoom": 5 },
+      "travelTips": {
+        "climate": "Muy diverso: andino, cálido, caribeño y urbano en un mismo viaje.",
+        "estimatedCost": "Costo moderado con opciones muy flexibles según la ruta.",
+        "bestTime": "Buena entre diciembre y marzo o entre julio y agosto."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Cartagena, Medellín y una pausa para probar café o disfrutar la costa.",
+        "localTip": "Ajusta el equipaje al contraste entre ciudad, montaña y playa; cambia mucho entre regiones.",
+        "pace": "Combina una ciudad principal con una escapada caribeña o cultural para equilibrar la experiencia."
+      }
+    },
+    "Perú": {
+      "location": { "lat": -9.19, "lng": -75.0152, "zoom": 5 },
+      "travelTips": {
+        "climate": "Clima diverso entre costa, altura y montaña, con impacto notable en la energía del viaje.",
+        "estimatedCost": "Costo moderado, muy valioso para rutas históricas y gastronómicas.",
+        "bestTime": "Muy recomendable entre mayo y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Machu Picchu y una ruta por Cusco o el Valle Sagrado.",
+        "localTip": "Aclimatarte un día antes de subir a zonas altas cambia por completo la experiencia.",
+        "pace": "Alterna ruinas, ciudad y caminatas suaves para no saturarte con la altura."
+      }
+    },
+    "Paraguay": {
+      "location": { "lat": -23.4425, "lng": -58.4438, "zoom": 6 },
+      "travelTips": {
+        "climate": "Subtropical y cálido, con días intensos en ciertas temporadas.",
+        "estimatedCost": "Costo accesible para un viaje breve y muy activo.",
+        "bestTime": "Conviene más entre mayo y septiembre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Ciudad del Este y la experiencia de recorrer la triple frontera.",
+        "localTip": "Cruza temprano y compara precios con calma si planeas compras o recorridos a pie.",
+        "pace": "Se disfruta mejor como viaje corto, directo y bien enfocado por zonas."
+      }
+    },
+    "Brasil": {
+      "location": { "lat": -14.235, "lng": -51.9253, "zoom": 4 },
+      "travelTips": {
+        "climate": "Tropical y subtropical, con mucha variación según la región visitada.",
+        "estimatedCost": "Costo moderado, pero con traslados que pueden aumentar el presupuesto.",
+        "bestTime": "Muy buena ventana entre mayo y octubre según la zona."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas las Cataratas del Iguazú y una experiencia urbana o costera como Río de Janeiro.",
+        "localTip": "Planea bien las distancias: el tamaño del país hace que los traslados pesen más de lo esperado.",
+        "pace": "Divide el viaje por zonas para aprovechar mejor ciudad, naturaleza y playa."
+      }
+    },
+    "Argentina": {
+      "location": { "lat": -38.4161, "lng": -63.6167, "zoom": 4 },
+      "travelTips": {
+        "climate": "Muy variable entre ciudad, montaña, sur frío y regiones de vino.",
+        "estimatedCost": "Costo moderado con rutas muy distintas según el destino específico.",
+        "bestTime": "Depende de la zona, pero suele rendir muy bien entre primavera y otoño."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Buenos Aires, Mendoza y una visita a las Cataratas del Iguazú.",
+        "localTip": "Reserva tiempo para asado, caminatas urbanas y planes ligados al clima de la región.",
+        "pace": "Mejor con una ruta clara entre ciudad, vino y naturaleza para que el viaje no se disperse."
+      }
+    },
+    "Inglaterra": {
+      "location": { "lat": 52.3555, "lng": -1.1743, "zoom": 6 },
+      "travelTips": {
+        "climate": "Templado y cambiante; conviene contar con lluvia ligera incluso en buenas temporadas.",
+        "estimatedCost": "Costo medio-alto, especialmente en Londres.",
+        "bestTime": "Mejor entre abril y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Londres, un paseo histórico y la visita a Harry Potter Studios.",
+        "localTip": "Usa transporte público y deja margen para museos, plazas y barrios con mucha vida propia.",
+        "pace": "Es un destino ideal para alternar historia, cultura pop y caminatas urbanas."
+      }
+    },
+    "Francia": {
+      "location": { "lat": 46.6034, "lng": 1.8883, "zoom": 6 },
+      "travelTips": {
+        "climate": "Templado con veranos agradables y cambios suaves según la región.",
+        "estimatedCost": "Costo medio-alto, sobre todo en París y zonas turísticas.",
+        "bestTime": "Muy recomendable entre abril y junio o septiembre y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas París y alguna salida a lugares como Versalles o Nice para variar el ritmo.",
+        "localTip": "Aprovecha museos, cafeterías y caminatas largas; gran parte del encanto está en recorrer con calma.",
+        "pace": "Combina monumentos, comida y un paseo menos planificado para que el viaje se sienta completo."
+      }
+    },
+    "Mónaco": {
+      "location": { "lat": 43.7384, "lng": 7.4246, "zoom": 10 },
+      "travelTips": {
+        "climate": "Mediterráneo, con clima agradable gran parte del año.",
+        "estimatedCost": "Costo alto por el estilo del destino y su entorno.",
+        "bestTime": "Ideal entre abril y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas el puerto, Montecarlo y las vistas de la costa mediterránea.",
+        "localTip": "Vale la pena recorrerlo a pie para absorber mejor el contraste entre lujo, mar y ciudad.",
+        "pace": "Funciona mejor como escapada corta pero muy visual."
+      }
+    },
+    "Bélgica": {
+      "location": { "lat": 50.5039, "lng": 4.4699, "zoom": 7 },
+      "travelTips": {
+        "climate": "Templado y fresco en buena parte del año.",
+        "estimatedCost": "Costo medio, cómodo para rutas urbanas y culturales.",
+        "bestTime": "Mejor entre abril y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Bruselas, Brujas y alguna pausa para chocolate y cerveza artesanal.",
+        "localTip": "Las plazas y recorridos a pie son clave para sentir la personalidad de cada ciudad.",
+        "pace": "Ideal para un ritmo urbano tranquilo, con ciudades cercanas entre sí."
+      }
+    },
+    "Países Bajos": {
+      "location": { "lat": 52.1326, "lng": 5.2913, "zoom": 7 },
+      "travelTips": {
+        "climate": "Templado y cambiante, con mañanas frescas y lluvias ocasionales.",
+        "estimatedCost": "Costo medio-alto, especialmente en Ámsterdam.",
+        "bestTime": "Muy buena entre abril y septiembre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Ámsterdam, los canales y una salida a pueblos o jardines como Keukenhof.",
+        "localTip": "Moverse a pie, en bici o en tren es lo que más rinde para este tipo de viaje.",
+        "pace": "Combina ciudad y escapadas cortas para que el viaje no se concentre solo en una zona."
+      }
+    },
+    "Alemania": {
+      "location": { "lat": 51.1657, "lng": 10.4515, "zoom": 6 },
+      "travelTips": {
+        "climate": "Templado a frío, con muy buena infraestructura para moverse entre ciudades.",
+        "estimatedCost": "Costo medio, razonable para rutas de historia y museos.",
+        "bestTime": "Suele funcionar bien entre mayo y septiembre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Berlín, la Isla de los Museos y espacios históricos como Sachsenhausen.",
+        "localTip": "Reserva tiempo emocional para los sitios de memoria histórica; merecen recorrerse sin prisa.",
+        "pace": "Mejor como viaje cultural denso, con pausas para procesar y disfrutar la ciudad."
+      }
+    },
+    "Italia": {
+      "location": { "lat": 41.8719, "lng": 12.5674, "zoom": 6 },
+      "travelTips": {
+        "climate": "Mediterráneo y agradable en buena parte del año, con veranos muy activos.",
+        "estimatedCost": "Costo medio-alto en ciudades icónicas y temporada alta.",
+        "bestTime": "Muy buena entre abril y junio o septiembre y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas el Coliseo Romano y el recorrido entre Roma, Venecia y Florencia.",
+        "localTip": "Deja espacio para comidas largas y traslados entre ciudades; el viaje se disfruta más sin correr.",
+        "pace": "Tu ruta funciona mejor como viaje cultural con pausas para disfrutar cada ciudad."
+      }
+    },
+    "Suiza": {
+      "location": { "lat": 46.8182, "lng": 8.2275, "zoom": 7 },
+      "travelTips": {
+        "climate": "Alpino y fresco, con cambios notorios según altura y temporada.",
+        "estimatedCost": "Costo alto, especialmente en transporte y alojamiento.",
+        "bestTime": "Excelente entre junio y septiembre, o en invierno si se busca nieve."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas St. Moritz, el Bernina Express y los paisajes alpinos nevados.",
+        "localTip": "Lleva ropa en capas y deja margen para detenerte solo a mirar el paisaje; vale muchísimo la pena.",
+        "pace": "Funciona mejor a ritmo pausado, disfrutando trayectos y vistas más que acumulando paradas."
+      }
+    },
+    "Ciudad del Vaticano": {
+      "location": { "lat": 41.9029, "lng": 12.4534, "zoom": 13 },
+      "travelTips": {
+        "climate": "Mediterráneo, generalmente favorable para recorridos a pie.",
+        "estimatedCost": "Costo medio dentro de una ruta más amplia por Roma.",
+        "bestTime": "Muy buena entre primavera y otoño."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas la Basílica de San Pedro, la Capilla Sixtina y el recorrido por los Museos del Vaticano.",
+        "localTip": "Llega temprano y entra con paciencia; la experiencia mejora mucho evitando horas pico.",
+        "pace": "Conviene recorrerlo con calma, como una visita de contemplación más que de prisa."
+      }
+    },
+    "Portugal": {
+      "location": { "lat": 39.3999, "lng": -8.2245, "zoom": 6 },
+      "travelTips": {
+        "climate": "Templado y agradable, especialmente en la costa.",
+        "estimatedCost": "Costo medio, muy equilibrado para ciudad y patrimonio.",
+        "bestTime": "Muy buena entre abril y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Lisboa, Belém y un rato tranquilo junto a la costa.",
+        "localTip": "Recorre a pie cuando puedas y reserva tiempo para comida local y vistas urbanas al atardecer.",
+        "pace": "Va mejor con un ritmo relajado, mezclando patrimonio, costa y ciudad."
+      }
+    },
+    "España": {
+      "location": { "lat": 40.4637, "lng": -3.7492, "zoom": 6 },
+      "travelTips": {
+        "climate": "Templado a cálido, con ciudades muy cómodas para caminar.",
+        "estimatedCost": "Costo medio, bastante manejable en comparación con otros destinos europeos.",
+        "bestTime": "Muy buena entre abril y junio o septiembre y octubre."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas los estadios, el centro histórico y una caminata larga por Madrid o Barcelona.",
+        "localTip": "Aprovecha los horarios largos de comida y la vida nocturna en barrios céntricos.",
+        "pace": "Haz una mezcla de ciudad, fútbol y paseo urbano para que el viaje quede bien redondo."
+      }
+    }
+  }
+}
