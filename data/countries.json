@@ -51,6 +51,32 @@
         "favorite":  false
     },
     {
+        "name":  "Canadá",
+        "description":  "Naturaleza inmensa, ciudades limpias y rutas panorámicas inolvidables.",
+        "places":  [
+                       "Calgary",
+                       "Banff",
+                       "Lake Louise"
+                   ],
+        "activities":  [
+                           "Recorrer parques nacionales",
+                           "Conducir rutas escénicas en Alberta",
+                           "Ver lagos glaciares"
+                       ],
+        "experiences":  "Canadá sorprendió por sus montañas, la organización de sus ciudades y la paz de sus paisajes naturales.",
+        "photos":  [
+                       "images/canada/banff.jpg",
+                       "images/canada/lake-louise.jpg"
+                   ],
+        "region":  "Norteamérica",
+        "tags":  [
+                     "naturaleza",
+                     "montaña"
+                 ],
+        "year":  2026,
+        "favorite":  false
+    },
+    {
         "name":  "Guatemala",
         "description":  "Tierra de volcanes, cultura indígena y ciudades históricas.",
         "places":  [

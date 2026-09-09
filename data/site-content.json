@@ -1,10 +1,11 @@
 {
   "metrics": {
-    "totalFlights": 62
+    "totalFlights": 64
   },
   "customCountryOrder": [
     "Costa Rica",
     "Estados Unidos",
+    "Canadá",
     "México",
     "Argentina",
     "Colombia",
@@ -32,7 +33,7 @@
       "description": "Paisajes extremos, biodiversidad y rutas donde el entorno es el gran protagonista.",
       "icon": "🌿",
       "destinations": [
-        { "country": "Canadá" },
+        { "country": "Canadá", "place": "Alberta" },
         { "country": "Argentina", "place": "Ushuaia" },
         { "country": "Chile" },
         { "country": "Brasil", "place": "Pantanal" },
@@ -87,6 +88,19 @@
         "mustSee": "No te pierdas Nueva York, Los Ángeles y una jornada completa en los parques de Orlando.",
         "localTip": "Reserva con tiempo actividades populares y distribuye el viaje por ciudad para evitar traslados pesados.",
         "pace": "Conviene alternar días intensos de ciudad con jornadas más ligeras para disfrutar mejor cada parada."
+      }
+    },
+    "Canadá": {
+      "location": { "lat": 56.1304, "lng": -106.3468, "zoom": 4 },
+      "travelTips": {
+        "climate": "Clima frío gran parte del año, con veranos suaves en algunas regiones.",
+        "estimatedCost": "Costo medio-alto, especialmente en transporte y hospedaje en temporada alta.",
+        "bestTime": "Ideal entre junio y septiembre para rutas de naturaleza y lagos."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas Banff, Lake Louise y una ruta panorámica por Alberta.",
+        "localTip": "Reserva parques y trayectos con antelación, y viaja con ropa por capas aunque sea verano.",
+        "pace": "Combina ciudad y naturaleza, dejando días completos para carretera y caminatas sin prisa."
       }
     },
     "México": {
