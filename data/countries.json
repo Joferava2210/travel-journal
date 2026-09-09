@@ -51,6 +51,32 @@
         "favorite":  false
     },
     {
+        "name":  "Canadá",
+        "description":  "Ciudades vibrantes y paisajes icónicos entre Toronto, Montreal y Niagara.",
+        "places":  [
+                       "Toronto",
+                       "Montreal",
+                       "Niagara"
+                   ],
+        "activities":  [
+                           "Recorrer Downtown Toronto y la CN Tower",
+                           "Explorar barrios emblemáticos y el ambiente local de Montreal",
+                           "Visitar las Cataratas del Niagara"
+                       ],
+        "experiences":  "Fue un viaje muy completo entre vida urbana, cultura francófona y la fuerza natural de Niagara.",
+        "photos":  [
+                       "images/canada/niagara.jpg",
+                       "images/canada/toronto.jpg"
+                   ],
+        "region":  "Norteamérica",
+        "tags":  [
+                     "ciudad",
+                     "naturaleza"
+                 ],
+        "year":  2026,
+        "favorite":  false
+    },
+    {
         "name":  "Guatemala",
         "description":  "Tierra de volcanes, cultura indígena y ciudades históricas.",
         "places":  [

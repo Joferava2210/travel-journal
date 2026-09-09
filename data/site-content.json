@@ -1,10 +1,11 @@
 {
   "metrics": {
-    "totalFlights": 62
+    "totalFlights": 66
   },
   "customCountryOrder": [
     "Costa Rica",
     "Estados Unidos",
+    "Canadá",
     "México",
     "Argentina",
     "Colombia",
@@ -32,7 +33,7 @@
       "description": "Paisajes extremos, biodiversidad y rutas donde el entorno es el gran protagonista.",
       "icon": "🌿",
       "destinations": [
-        { "country": "Canadá" },
+        { "country": "Canadá", "place": "Alberta" },
         { "country": "Argentina", "place": "Ushuaia" },
         { "country": "Chile" },
         { "country": "Brasil", "place": "Pantanal" },
@@ -87,6 +88,19 @@
         "mustSee": "No te pierdas Nueva York, Los Ángeles y una jornada completa en los parques de Orlando.",
         "localTip": "Reserva con tiempo actividades populares y distribuye el viaje por ciudad para evitar traslados pesados.",
         "pace": "Conviene alternar días intensos de ciudad con jornadas más ligeras para disfrutar mejor cada parada."
+      }
+    },
+    "Canadá": {
+      "location": { "lat": 43.6532, "lng": -79.3832, "zoom": 5 },
+      "travelTips": {
+        "climate": "Clima variable entre ciudades, con inviernos fríos y veranos agradables.",
+        "estimatedCost": "Costo medio-alto, especialmente en hospedaje y traslados entre ciudades.",
+        "bestTime": "Ideal entre mayo y octubre para caminar ciudades y visitar Niagara con buen clima."
+      },
+      "recommendations": {
+        "mustSee": "No te pierdas la CN Tower en Toronto, el casco histórico de Montreal y las Cataratas del Niagara.",
+        "localTip": "Compra con antelación traslados entre ciudades y lleva abrigo ligero incluso en verano por cambios de temperatura.",
+        "pace": "Distribuye el viaje por bloques: Toronto para ciudad, Montreal para cultura y un día completo para Niagara."
       }
     },
     "México": {
