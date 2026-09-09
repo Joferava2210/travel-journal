@@ -1,6 +1,6 @@
 {
   "metrics": {
-    "totalFlights": 64
+    "totalFlights": 66
   },
   "customCountryOrder": [
     "Costa Rica",
@@ -91,16 +91,16 @@
       }
     },
     "Canadá": {
-      "location": { "lat": 56.1304, "lng": -106.3468, "zoom": 4 },
+      "location": { "lat": 43.6532, "lng": -79.3832, "zoom": 5 },
       "travelTips": {
-        "climate": "Clima frío gran parte del año, con veranos suaves en algunas regiones.",
-        "estimatedCost": "Costo medio-alto, especialmente en transporte y hospedaje en temporada alta.",
-        "bestTime": "Ideal entre junio y septiembre para rutas de naturaleza y lagos."
+        "climate": "Clima variable entre ciudades, con inviernos fríos y veranos agradables.",
+        "estimatedCost": "Costo medio-alto, especialmente en hospedaje y traslados entre ciudades.",
+        "bestTime": "Ideal entre mayo y octubre para caminar ciudades y visitar Niagara con buen clima."
       },
       "recommendations": {
-        "mustSee": "No te pierdas Banff, Lake Louise y una ruta panorámica por Alberta.",
-        "localTip": "Reserva parques y trayectos con antelación, y viaja con ropa por capas aunque sea verano.",
-        "pace": "Combina ciudad y naturaleza, dejando días completos para carretera y caminatas sin prisa."
+        "mustSee": "No te pierdas la CN Tower en Toronto, el casco histórico de Montreal y las Cataratas del Niagara.",
+        "localTip": "Compra con antelación traslados entre ciudades y lleva abrigo ligero incluso en verano por cambios de temperatura.",
+        "pace": "Distribuye el viaje por bloques: Toronto para ciudad, Montreal para cultura y un día completo para Niagara."
       }
     },
     "México": {

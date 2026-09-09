@@ -52,26 +52,26 @@
     },
     {
         "name":  "Canadá",
-        "description":  "Naturaleza inmensa, ciudades limpias y rutas panorámicas inolvidables.",
+        "description":  "Ciudades vibrantes y paisajes icónicos entre Toronto, Montreal y Niagara.",
         "places":  [
-                       "Calgary",
-                       "Banff",
-                       "Lake Louise"
+                       "Toronto",
+                       "Montreal",
+                       "Niagara"
                    ],
         "activities":  [
-                           "Recorrer parques nacionales",
-                           "Conducir rutas escénicas en Alberta",
-                           "Ver lagos glaciares"
+                           "Recorrer Downtown Toronto y la CN Tower",
+                           "Explorar barrios emblemáticos y el ambiente local de Montreal",
+                           "Visitar las Cataratas del Niagara"
                        ],
-        "experiences":  "Canadá sorprendió por sus montañas, la organización de sus ciudades y la paz de sus paisajes naturales.",
+        "experiences":  "Fue un viaje muy completo entre vida urbana, cultura francófona y la fuerza natural de Niagara.",
         "photos":  [
-                       "images/canada/banff.jpg",
-                       "images/canada/lake-louise.jpg"
+                       "images/canada/niagara.jpg",
+                       "images/canada/toronto.jpg"
                    ],
         "region":  "Norteamérica",
         "tags":  [
-                     "naturaleza",
-                     "montaña"
+                     "ciudad",
+                     "naturaleza"
                  ],
         "year":  2026,
         "favorite":  false
